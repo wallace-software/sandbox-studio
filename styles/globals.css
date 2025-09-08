@@ -223,15 +223,18 @@ h3{
 .input {
   @apply border bg-form-background border-white border-opacity-10 rounded-lg px-3 py-2 focus:border-sand active:border-sand focus:outline-none active:outline-none;
 }
-  
+
+.container-bottom-border {
+  @apply border-b border-white border-opacity-10;
+}
 .landing-container {
-  @apply min-h-[95svh] xl:min-h-full xl:h-[100svh] lg:max-h-[1080px] w-full border-b border-white border-opacity-10 px-5 xl:px-0;
+  @apply container-bottom-border min-h-[95svh] xl:min-h-full xl:h-[100svh] lg:max-h-[1080px] w-full px-5 xl:px-0;
 } 
 .landing-container-sm {
-  @apply h-full xl:min-h-full xl:h-[100svh] lg:max-h-[1080px] w-full border-b border-white border-opacity-10 px-5 xl:px-0;
+  @apply container-bottom-border h-full xl:min-h-full xl:h-[100svh] lg:max-h-[1080px] w-full border-b border-white border-opacity-10 px-5 xl:px-0;
 }
 .landing-container-left {
-  @apply min-h-[95svh]  xl:min-h-[100svh] lg:max-h-[1080px] w-full border-b border-white border-opacity-10 pl-5 lg:pl-14 xl:pl-32 2010:pl-0;
+  @apply container-bottom-border min-h-[95svh] xl:min-h-[100svh] lg:max-h-[1080px] w-full border-b border-white border-opacity-10 pl-5 lg:pl-14 xl:pl-32 2010:pl-0;
 }
 .page-px {
   @apply px-5 md:px-10 xl:px-16 3xl:px-[5%];

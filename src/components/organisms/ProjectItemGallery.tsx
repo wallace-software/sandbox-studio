@@ -13,9 +13,9 @@ const ProjectItemGallery: FC<Props> = (props: Props) => {
   const [winWidth] = useWindowSize();
 
   return (
-    <div className="page-pt page-pl relative self-center w-full h-full items-center justify-center">
-      <div className="flex flex-col gap-0 md:gap-12">
-        <div className="col-start gap-6 max-w-[730px]">
+    <div className="container-bottom-border page-pt page-pl relative self-center w-full h-full items-center justify-center">
+      <div className="flex flex-col gap-12 md:gap-12">
+        <div className="col-start gap-8 max-w-[730px]">
           <h1>{renderGoldText(project.gallery.header)}</h1>
           <p>{project.gallery.subheader}</p>
         </div>

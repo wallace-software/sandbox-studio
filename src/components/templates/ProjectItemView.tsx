@@ -1,6 +1,7 @@
 import { Dispatch, SetStateAction, FC } from "react";
 import {
   LetsWorkLink,
+  ProjectItemDetails,
   ProjectItemGallery,
   ProjectItemIntro,
 } from "@components";
@@ -29,7 +30,7 @@ export const projectsData: ProjectItemData[] = [
       assets: ["", ""],
     },
     details: {
-      header: "Refreshing the website to look the part.",
+      header: "Refreshing the <gold>website</gold> to look the part.",
       subheader:
         "The new brand needed a website to match. We made sure to make use of what was working before, and rid of everything that was not.",
       video: "",
@@ -56,6 +57,7 @@ const ProjectItemView: FC<Props> = (props: Props) => {
         <>
           <ProjectItemIntro setAssets={setAssets} project={project} />
           <ProjectItemGallery project={project} />
+          <ProjectItemDetails project={project} />
           <LetsWorkLink />
         </>
       )}

@@ -19,7 +19,7 @@ const ProjectItemIntro: FC<IntroProps> = (props: IntroProps) => {
         </h1>
         <p className="text-grayscale-300">{project.intro.subheader}</p>
       </div>
-      <div className="lex flex-col items-end justify-end">
+      <div className="flex flex-col items-end justify-end">
         <ProjectItemFrame videoId={project.intro.video} />
       </div>
     </div>

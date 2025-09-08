@@ -1,10 +1,25 @@
-export const renderGoldText = (header: string) =>
-  header.split("<gold>").map((part, index) =>
-    part.includes("</gold>") ? (
-      <span key={index} className="text-sand">
-        {part.replace("</gold>", "")}
+export const renderGoldText = (header: string) => {
+  const regex = /<gold>(.*?)<\/gold>/g;
+  const parts: (string | JSX.Element)[] = [];
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+
+  while ((match = regex.exec(header)) !== null) {
+    // Add text before <gold>
+    if (match.index > lastIndex) {
+      parts.push(header.slice(lastIndex, match.index));
+    }
+    // Add gold text
+    parts.push(
+      <span key={match.index} className="text-sand">
+        {match[1]}
       </span>
-    ) : (
-      part
-    )
-  );
+    );
+    lastIndex = regex.lastIndex;
+  }
+  // Add remaining text after last </gold>
+  if (lastIndex < header.length) {
+    parts.push(header.slice(lastIndex));
+  }
+  return parts;
+};

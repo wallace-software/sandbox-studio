@@ -49,6 +49,7 @@ const GalleryItem = dynamic(() => import("./organisms/GalleryItem"));
 const TeamMemberCard = dynamic(() => import("./organisms/TeamMemberCard"));
 const ProjectItemIntro = dynamic(() => import("./organisms/ProjectItemIntro"));
 const ProjectItemGallery = dynamic(() => import("./organisms/ProjectItemGallery"));
+const ProjectItemDetails = dynamic(() => import("./organisms/ProjectItemDetails"));
 //templates
 const PageLayout = dynamic(() => import("./templates/PageLayout"));
 const LandingView = dynamic(() => import("./templates/LandingView"));
@@ -124,4 +125,5 @@ export {
   ProjectItemFrame,
   ProjectItemIntro,
   ProjectItemGallery,
+  ProjectItemDetails,
 };

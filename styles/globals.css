@@ -204,6 +204,9 @@ h3{
 }
 
 /* Custom */
+.three-part-border {
+  @apply rounded-t-3xl border-t-[8px] md:border-t-[16px] border-x-[8px] md:border-x-[16px] border-sand;
+}
 
 .icon-hover {
   @apply z-10 cursor-pointer transition-300 fill-white opacity-100 md:opacity-60 hover:opacity-100;

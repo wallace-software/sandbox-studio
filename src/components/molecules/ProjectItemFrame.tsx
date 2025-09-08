@@ -16,9 +16,8 @@ const ProjectItemFrame: FC<Props> = ({
 
   return (
     <div
-      className={`relative 
-        w-[300px] md:!w-[700px] xl:!w-[800px] 2xl:!w-[1000px] aspect-video 
-        rounded-t-3xl border-t-[16px] border-x-[16px] border-sand 
+      className={`relative three-part-border  
+        w-[300px] md:!w-[700px] xl:!w-[800px] 2xl:!w-[1000px] aspect-video  
         bg-black/70 overflow-hidden ${props.className ?? ""}`}
       onClick={() => {
         if (!isPlaying) setPlaying(true);

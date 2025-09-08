@@ -1,5 +1,4 @@
-import { FC, HTMLAttributes, useState } from "react";
-import Link from "next/link";
+import { FC, HTMLAttributes } from "react";
 import { useRouter } from "next/router";
 
 interface Props extends HTMLAttributes<HTMLDivElement> {

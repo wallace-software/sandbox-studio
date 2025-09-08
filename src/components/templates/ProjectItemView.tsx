@@ -2,6 +2,7 @@ import { Dispatch, SetStateAction, FC } from "react";
 import {
   LetsWorkLink,
   ProjectItemDetails,
+  ProjectItemFinale,
   ProjectItemGallery,
   ProjectItemIntro,
 } from "@components";
@@ -39,8 +40,8 @@ export const projectsData: ProjectItemData[] = [
       header: "The grand finale.",
       subheader:
         "The work that goes into the website is great, but delivering the project is the most important. At Sandbox, delivering is our speciality.",
-      assets: [""],
-      cta: { text: "Visit Site", link: "/contact" },
+      video: "",
+      cta: { text: "Visit Site", link: "https://folio-ten-coral.vercel.app/" },
     },
   },
 ];
@@ -58,6 +59,7 @@ const ProjectItemView: FC<Props> = (props: Props) => {
           <ProjectItemIntro setAssets={setAssets} project={project} />
           <ProjectItemGallery project={project} />
           <ProjectItemDetails project={project} />
+          <ProjectItemFinale project={project} />
           <LetsWorkLink />
         </>
       )}

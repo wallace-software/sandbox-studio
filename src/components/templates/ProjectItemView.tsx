@@ -1,5 +1,9 @@
 import { Dispatch, SetStateAction, FC } from "react";
-import { LetsWorkLink, ProjectItemIntro } from "@components";
+import {
+  LetsWorkLink,
+  ProjectItemGallery,
+  ProjectItemIntro,
+} from "@components";
 import { useViewStore } from "@contexts";
 import { ProjectItemData } from "@constants";
 
@@ -19,7 +23,7 @@ export const projectsData: ProjectItemData[] = [
       video: "",
     },
     gallery: {
-      header: "Giving the brand a second chance.",
+      header: "Giving the <gold>brand</gold> a second chance.",
       subheader:
         "Folio requested a brand refresh, taking the original logo and working it into something new. Something that matched their moves. Progressive, sleek and modern.",
       assets: ["", ""],
@@ -51,6 +55,7 @@ const ProjectItemView: FC<Props> = (props: Props) => {
       {project && showView && (
         <>
           <ProjectItemIntro setAssets={setAssets} project={project} />
+          <ProjectItemGallery project={project} />
           <LetsWorkLink />
         </>
       )}

@@ -48,6 +48,7 @@ const Gallery = dynamic(() => import("./organisms/Gallery"));
 const GalleryItem = dynamic(() => import("./organisms/GalleryItem"));
 const TeamMemberCard = dynamic(() => import("./organisms/TeamMemberCard"));
 const ProjectItemIntro = dynamic(() => import("./organisms/ProjectItemIntro"));
+const ProjectItemGallery = dynamic(() => import("./organisms/ProjectItemGallery"));
 //templates
 const PageLayout = dynamic(() => import("./templates/PageLayout"));
 const LandingView = dynamic(() => import("./templates/LandingView"));
@@ -121,5 +122,6 @@ export {
   LinkedinIcon,
   ProjectItemView,
   ProjectItemFrame,
-  ProjectItemIntro
+  ProjectItemIntro,
+  ProjectItemGallery,
 };

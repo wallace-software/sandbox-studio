@@ -26,7 +26,7 @@ const ProjectItemFinale: FC<Props> = (props: Props) => {
           />
         )}
       </div>
-      <ProjectItemFrame videoId={project.finale.video} />
+      <ProjectItemFrame videoId={project.finale.videoId} />
     </div>
   );
 };

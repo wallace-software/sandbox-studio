@@ -18,7 +18,7 @@ const ProjectItemDetails: FC<Props> = (props: Props) => {
         </h2>
         <p className="max-w-[680px] text-center">{project.details.subheader}</p>
       </div>
-      <ProjectItemFrame videoId={project.details.video} />
+      <ProjectItemFrame videoId={project.details.videoId} />
     </div>
   );
 };

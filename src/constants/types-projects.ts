@@ -6,7 +6,7 @@ export interface CallToAction {
 export interface ProjectSection {
   header: string;
   subheader: string;
-  video?: string;
+  videoId?: string;
   assets?: string[];
   cta?: CallToAction;
 }

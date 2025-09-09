@@ -13,7 +13,7 @@ const ProjectItemGallery: FC<Props> = (props: Props) => {
   const [winWidth] = useWindowSize();
 
   return (
-    <div className="container-bottom-border page-pt page-pl relative self-center w-full h-full items-center justify-center">
+    <div className="container-bottom-border page-pt page-pl relative self-center w-full h-full lg:h-screen items-center justify-center">
       <div className="flex flex-col gap-12 md:gap-12">
         <div className="col-start gap-8 max-w-[730px]">
           <h2 className="text-white">

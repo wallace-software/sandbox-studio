@@ -1,5 +1,58 @@
-import { Variants } from "framer-motion";
+import { Variants, Transition } from "framer-motion";
 
+export const ease: number[] = [0.22, 1, 0.36, 1]; // sleek "expo" style
+
+export const timings = {
+  fast: 0.35,
+  base: 0.6,
+  slow: 0.9,
+};
+
+export const stagger = (delayChildren = 0.1, staggerChildren = 0.06) => ({
+  hidden: {},
+  show: {
+    transition: {
+      delayChildren,
+      staggerChildren,
+    },
+  },
+}) satisfies Variants;
+
+export const fadeInUp: Variants = {
+  hidden: { opacity: 0, y: 16, filter: "blur(4px)" },
+  show: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: { duration: timings.base, ease },
+  },
+};
+
+export const fadeIn: Variants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: { duration: timings.base, ease },
+  },
+};
+
+export const scaleInSoft: Variants = {
+  hidden: { opacity: 0, scale: 0.98 },
+  show: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: timings.base, ease },
+  },
+};
+
+export const slideInRight: Variants = {
+  hidden: { opacity: 0, x: 24 },
+  show: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: timings.base, ease },
+  },
+};
 // Animation variants
 export const widgetContainerVariants = {
   hidden: {},

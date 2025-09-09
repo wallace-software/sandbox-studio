@@ -1,18 +1,16 @@
-import { Dispatch, SetStateAction, FC } from "react";
-import { BackgroundImage, ProjectItemFrame } from "@components";
+import { FC } from "react";
+import { ProjectItemFrame } from "@components";
 import { ProjectItemData } from "@constants";
 import { renderGoldText } from "@utils";
 
 interface IntroProps {
-  setAssets?: Dispatch<SetStateAction<boolean[]>>;
   project: ProjectItemData;
 }
 const ProjectItemIntro: FC<IntroProps> = (props: IntroProps) => {
-  const { setAssets, project } = props;
+  const { project } = props;
   return (
-    <div className="container-bottom-border page-pt page-px h-screen w-full relative col-centered">
-      <BackgroundImage setAssets={setAssets} fixed={false} />
-      <div className="col-centered gap-12 md:gap-8 flex-grow f">
+    <div className="container-bottom-border pt-24 md:pt-32 xl:pt-[100px] page-px h-screen w-full relative col-centered">
+      <div className="col-centered gap-12 md:gap-8 xl:gap-4 flex-grow f">
         <p className="text-white">{project.name}</p>
         <h1 className="max-w-[700px] xl:max-w-[800px] text-center">
           {renderGoldText(project.intro.header)}

@@ -16,9 +16,9 @@ const ProjectItemFrame: FC<Props> = ({
 
   return (
     <div
-      className={`relative three-part-border  
+      className={`relative   
         w-[300px] md:!w-[700px] xl:!w-[800px] 2xl:!w-[1000px] aspect-video  
-        bg-black/70 overflow-hidden ${props.className ?? ""}`}
+        bg-black/70 overflow-hidden ${props.className ?? "three-part-border"}`}
       onClick={() => {
         if (!isPlaying) setPlaying(true);
       }}

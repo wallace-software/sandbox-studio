@@ -11,12 +11,10 @@ const ProjectItemFinale: FC<Props> = (props: Props) => {
   const { project } = props;
 
   return (
-    <div className="container-bottom-border page-pt page-px lg:h-screen w-full relative flex flex-col xl:flex-row items-center  gap-8">
-      <div className="col-centered gap-8 mb-12 max-w-[442px]">
-        <h2 className="max-w-[700px] xl:max-w-[830px] text-center text-white">
-          {renderGoldText(project.finale.header)}
-        </h2>
-        <p className="max-w-[680px] text-center">{project.finale.subheader}</p>
+    <div className="container-bottom-border page-pt page-px lg:h-screen w-full relative flex flex-col xl:flex-row xl:items-center xl:justify-center gap-8 pb-4">
+      <div className="col-start gap-8 md:mb-12 max-w-[400px] xl:ml-36 2xl:ml-48">
+        <h2 className=" text-white">{renderGoldText(project.finale.header)}</h2>
+        <p>{project.finale.subheader}</p>
         {project.finale.cta && (
           <Button
             title={project.finale.cta.text}
@@ -26,7 +24,12 @@ const ProjectItemFinale: FC<Props> = (props: Props) => {
           />
         )}
       </div>
-      <ProjectItemFrame videoId={project.finale.videoId} />
+      <div className="xl:absolute 3xl:relative xl:-right-20 3xl:right-0 xl:top-1/2 3xl:top-0 xl:-translate-y-1/2 3xl:-translate-y-0 xl:self-center">
+        <ProjectItemFrame
+          videoId={project.finale.videoId}
+          className="full-gold-border "
+        />
+      </div>
     </div>
   );
 };

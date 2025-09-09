@@ -1,5 +1,6 @@
 import { Dispatch, SetStateAction, FC } from "react";
 import {
+  BackgroundImage,
   LetsWorkLink,
   ProjectItemDetails,
   ProjectItemFinale,
@@ -7,47 +8,12 @@ import {
   ProjectItemIntro,
 } from "@components";
 import { useViewStore } from "@contexts";
-import { ProjectItemData } from "@constants";
+import { projectsData } from "@constants";
 
 interface Props {
   setAssets?: Dispatch<SetStateAction<boolean[]>>;
   id?: string | string[] | undefined;
 }
-
-export const projectsData: ProjectItemData[] = [
-  {
-    id: "folio",
-    name: "Folio",
-    intro: {
-      header:
-        "A modern refresh to brand & website. <gold>Folio takes a step forward.</gold>",
-      subheader: "Internship hiring, streamlined and polished.",
-      videoId: "dd20e765bdeb6307d8b0c1a1399c8b83",
-    },
-    gallery: {
-      header: "Giving the <gold>brand</gold> a second chance.",
-      subheader:
-        "Folio requested a brand refresh, taking the original logo and working it into something new. Something that matched their moves. Progressive, sleek and modern.",
-      assets: [
-        "dd20e765bdeb6307d8b0c1a1399c8b83",
-        "dd20e765bdeb6307d8b0c1a1399c8b83",
-      ],
-    },
-    details: {
-      header: "Refreshing the <gold>website</gold> to look the part.",
-      subheader:
-        "The new brand needed a website to match. We made sure to make use of what was working before, and rid of everything that was not.",
-      videoId: "dd20e765bdeb6307d8b0c1a1399c8b83",
-    },
-    finale: {
-      header: "The grand finale.",
-      subheader:
-        "The work that goes into the website is great, but delivering the project is the most important. At Sandbox, delivering is our speciality.",
-      videoId: "dd20e765bdeb6307d8b0c1a1399c8b83",
-      cta: { text: "Visit Site", link: "https://folio-ten-coral.vercel.app/" },
-    },
-  },
-];
 
 //main component
 const ProjectItemView: FC<Props> = (props: Props) => {
@@ -55,11 +21,13 @@ const ProjectItemView: FC<Props> = (props: Props) => {
   const { showView } = useViewStore();
 
   const project = projectsData.find((proj) => proj.id === id);
+
   return (
     <div className="flex flex-col">
+      <BackgroundImage setAssets={setAssets} fixed={false} />
       {project && showView && (
         <>
-          <ProjectItemIntro setAssets={setAssets} project={project} />
+          <ProjectItemIntro project={project} />
           <ProjectItemGallery project={project} />
           <ProjectItemDetails project={project} />
           <ProjectItemFinale project={project} />

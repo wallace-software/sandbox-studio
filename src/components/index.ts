@@ -18,6 +18,7 @@ const Button = dynamic(() => import("./atoms/Button"));
 const AnimateWrapper = dynamic(() => import("./atoms/AnimateWrapper"));
 const Logo = dynamic(() => import("./atoms/Logo"));
 const Reveal = dynamic(() => import("./atoms/Reveal"));
+const Stagger = dynamic(() => import("./atoms/Stagger"));
 //molecules
 const PageHead = dynamic(() => import("./molecules/PageHead"));
 const ServiceListItem = dynamic(() => import("./molecules/ServiceListItem"));
@@ -129,5 +130,6 @@ export {
   ProjectItemGallery,
   ProjectItemDetails,
   ProjectItemFinale,
-  Reveal
+  Reveal,
+  Stagger
 };

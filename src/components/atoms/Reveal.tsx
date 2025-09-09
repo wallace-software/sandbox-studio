@@ -6,7 +6,7 @@ type RevealProps = MotionProps & {
   once?: boolean; // animate only once
 };
 
-export const Reveal = forwardRef<HTMLDivElement, RevealProps>(
+const Reveal = forwardRef<HTMLDivElement, RevealProps>(
   ({ amount = 0.2, once = true, ...rest }, ref) => (
     <motion.div
       ref={ref}
@@ -17,4 +17,5 @@ export const Reveal = forwardRef<HTMLDivElement, RevealProps>(
     />
   )
 );
-Reveal.displayName = "Reveal";
+
+export default Reveal;

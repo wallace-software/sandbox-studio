@@ -8,7 +8,10 @@ export const timings = {
   slow: 0.9,
 };
 
-export const stagger = (delayChildren = 0.1, staggerChildren = 0.06) => ({
+export const stagger = (
+  delayChildren = 0.1,
+  staggerChildren = 0.06
+): Variants => ({
   hidden: {},
   show: {
     transition: {
@@ -16,7 +19,7 @@ export const stagger = (delayChildren = 0.1, staggerChildren = 0.06) => ({
       staggerChildren,
     },
   },
-}) satisfies Variants;
+});
 
 export const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 16, filter: "blur(4px)" },
@@ -53,6 +56,7 @@ export const slideInRight: Variants = {
     transition: { duration: timings.base, ease },
   },
 };
+
 // Animation variants
 export const widgetContainerVariants = {
   hidden: {},

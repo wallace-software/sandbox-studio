@@ -18,14 +18,13 @@ interface Props {
 //main component
 const ProjectItemView: FC<Props> = (props: Props) => {
   const { setAssets, id } = props;
-  const { showView } = useViewStore();
 
   const project = projectsData.find((proj) => proj.id === id);
 
   return (
     <div className="flex flex-col">
       <BackgroundImage setAssets={setAssets} fixed={false} />
-      {project && showView && (
+      {project && (
         <>
           <ProjectItemIntro project={project} />
           <ProjectItemGallery project={project} />

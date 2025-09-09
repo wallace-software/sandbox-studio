@@ -1,20 +1,28 @@
 import { motion, MotionProps } from "framer-motion";
-import { forwardRef } from "react";
+import { forwardRef, PropsWithChildren } from "react";
 
-type RevealProps = MotionProps & {
-  amount?: number; // how much of element must be visible (0-1)
-  once?: boolean; // animate only once
-};
+// Inherit all props of <motion.div>, then add our extras.
+type MotionDivProps = React.ComponentProps<typeof motion.div>;
 
-const Reveal = forwardRef<HTMLDivElement, RevealProps>(
-  ({ amount = 0.2, once = true, ...rest }, ref) => (
+type RevealProps = PropsWithChildren<
+  MotionDivProps & {
+    amount?: number;
+    once?: boolean;
+    animate?: boolean;
+  }
+>;
+
+export const Reveal = forwardRef<HTMLDivElement, RevealProps>(
+  ({ amount = 0.2, once = true, animate = true, children, ...rest }, ref) => (
     <motion.div
       ref={ref}
       initial="hidden"
-      whileInView="show"
+      whileInView={animate ? "show" : "hidden"}
       viewport={{ amount, once }}
       {...rest}
-    />
+    >
+      {children}
+    </motion.div>
   )
 );
 

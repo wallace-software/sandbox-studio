@@ -11,8 +11,8 @@ const ProjectItemFinale: FC<Props> = (props: Props) => {
   const { project } = props;
 
   return (
-    <div className="container-bottom-border page-pt page-px lg:h-screen w-full relative flex flex-col xl:flex-row xl:items-center xl:justify-center gap-8 pb-4">
-      <div className="col-start gap-8 md:mb-12 max-w-[400px] xl:ml-36 2xl:ml-48">
+    <section className="container-bottom-border page-pt page-px lg:h-screen w-full relative flex flex-col xl:flex-row xl:items-center xl:justify-between 3xl:justify-center gap-8 pb-4">
+      <div className="col-start gap-8 md:mb-12 max-w-[400px] xl:ml-36 2xl:ml-48 3xl:ml-0">
         <h2 className=" text-white">{renderGoldText(project.finale.header)}</h2>
         <p>{project.finale.subheader}</p>
         {project.finale.cta && (
@@ -30,7 +30,7 @@ const ProjectItemFinale: FC<Props> = (props: Props) => {
           className="full-gold-border "
         />
       </div>
-    </div>
+    </section>
   );
 };
 

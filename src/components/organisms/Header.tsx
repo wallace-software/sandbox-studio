@@ -12,11 +12,10 @@ import { useWindowSize } from "@hooks";
 import { useRouter } from "next/router";
 
 interface Props {
-  showHeader?: boolean;
   headerType?: string;
 }
 
-const Header: FC<Props> = ({ headerType = "scroll", showHeader = true }) => {
+const Header: FC<Props> = ({ headerType = "scroll" }) => {
   const [showNav, setShowNav] = useState(true);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isDeepScrolled, setIsDeepScrolled] = useState(false);

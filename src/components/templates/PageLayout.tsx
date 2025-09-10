@@ -42,7 +42,6 @@ const PageLayout: FC<Props> = (props: Props) => {
         url="https://sandboxstud.io/"
         twitter="sandbox_studio_"
       />
-      <Header headerType={headerType} />
       <main className="flex flex-col h-full w-full overflow-y-auto">
         {children}
       </main>

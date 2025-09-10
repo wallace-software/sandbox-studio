@@ -1,4 +1,4 @@
-import { FC, useEffect, useRef } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { useWindowSize } from "@hooks";
@@ -40,13 +40,18 @@ const NavigationMenu: FC<Props> = (props: Props) => {
   const [winWidth, winHeight] = useWindowSize();
   const timeoutRef = useRef<NodeJS.Timeout>();
   const ref = useRef(null);
+  const router = useRouter();
+
+  // pending navigation target (after exit completes)
+  const pendingHrefRef = useRef<string | null>(null);
+  const [isNavigating, setIsNavigating] = useState(false);
 
   const isTablet: boolean = winWidth < 900;
   const menuVariants = isTablet ? mobileMenuParent : dekstopMenuParent;
-  //stop page scroll (when modal or menu open)
+
+  // lock body scroll while menu open
   useEffect(() => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
-
     if (open) {
       timeoutRef.current = setTimeout(() => {
         document.body.style.overflow = "hidden";
@@ -54,13 +59,26 @@ const NavigationMenu: FC<Props> = (props: Props) => {
     } else {
       document.body.style.overflow = "auto";
     }
-
     return () => {
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
-      }
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
     };
   }, [open]);
+
+  // called by items
+  const handleItemSelect = (href: string) => {
+    if (isNavigating) return;
+    if (router.asPath === href) {
+      // same page: just close
+      toggleMenu();
+      return;
+    }
+    // queue navigation
+    pendingHrefRef.current = href;
+    setIsNavigating(true);
+    // triggers exit animation
+    toggleMenu();
+  };
+
   return (
     <>
       {/* backsplash */}
@@ -74,7 +92,19 @@ const NavigationMenu: FC<Props> = (props: Props) => {
         )}
       </AnimatePresence>
       {/* menu */}
-      <AnimatePresence mode="wait" initial={false}>
+      <AnimatePresence
+        mode="wait"
+        initial={false}
+        onExitComplete={() => {
+          // all exit animations done: navigate now
+          const href = pendingHrefRef.current;
+          if (href) {
+            pendingHrefRef.current = null;
+            setIsNavigating(false);
+            router.push(href);
+          }
+        }}
+      >
         {open && (
           <motion.aside
             key="main-menu"
@@ -82,7 +112,7 @@ const NavigationMenu: FC<Props> = (props: Props) => {
             animate={{ width: isTablet ? winWidth : 669, opacity: 1 }}
             exit={{
               width: 0,
-              transition: { duration: 0.5, delay: 0.25 },
+              transition: { duration: 0.3, delay: 0.25 },
               opacity: 1,
             }}
             transition={{ duration: 0.5 }}
@@ -91,17 +121,22 @@ const NavigationMenu: FC<Props> = (props: Props) => {
           >
             <motion.nav
               variants={menuVariants}
-              initial={"hidden"}
-              animate={"show"}
-              exit={"closed"}
-              className="h-screen pl-16 md:pl-24 pt-10 lg:pt-16 z-0 flex flex-col gap-8 0"
+              initial="hidden"
+              animate="show"
+              exit="closed"
+              className="h-screen pl-16 md:pl-24 pt-10 lg:pt-16 z-0 flex flex-col gap-8"
               key="nav"
             >
               {menuItems.map((item, index) => (
-                <NavigationMenuItem key={index} href={item.href}>
+                <NavigationMenuItem
+                  key={index}
+                  href={item.href}
+                  onSelect={handleItemSelect}
+                >
                   {item.label}
                 </NavigationMenuItem>
               ))}
+
               {/* Corner Image */}
               <motion.div variants={childVariants} className="-z-20">
                 <Image
@@ -112,6 +147,7 @@ const NavigationMenu: FC<Props> = (props: Props) => {
                   className="absolute top-0 right-0 -z-10 w-3/4 lg:w-auto"
                 />
               </motion.div>
+
               {/* Social Links */}
               <motion.div
                 className="flex flex-col gap-2 pt-12"
@@ -141,19 +177,28 @@ const NavigationMenu: FC<Props> = (props: Props) => {
 interface NavigationMenuItemProps {
   children: React.ReactNode;
   href: string;
+  onSelect?: (href: string) => void;
 }
-const NavigationMenuItem: FC<NavigationMenuItemProps> = (
-  props: NavigationMenuItemProps
-) => {
-  const { children, href } = props;
 
+const NavigationMenuItem: FC<NavigationMenuItemProps> = ({
+  children,
+  href,
+  onSelect,
+}) => {
   const router = useRouter();
   const active = router.asPath === href;
+
+  const handleClick: React.MouseEventHandler<HTMLAnchorElement> = (e) => {
+    if (!onSelect) return; // default Link behavior
+    e.preventDefault(); // stop immediate navigation
+    onSelect(href); // close menu -> exit anim -> navigate onExitComplete
+  };
 
   return (
     <motion.div variants={menuChildVariants}>
       <Link
         href={href}
+        onClick={handleClick}
         className={`text-4xl lg:text-5xl transition-200 hover:opacity-100 ${
           active ? "opacity-100" : "opacity-60"
         }`}

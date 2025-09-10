@@ -37,17 +37,19 @@ const ContactView: FC<Props> = (props: Props) => {
               to you as soon as possible!
             </p>
           </div>
-          <div className="hidden lg:flex flex-col ">
-            <p className="text-white font-light">Hate contact forms?</p>
+          {/* <div className="hidden lg:flex flex-col pt-5 ">
+            <p className="text-grayscale-300 font-ligh text-sm">
+              Hate contact forms?
+            </p>
             <a
               rel="noreferrer"
               target="_blank"
               href="mailto:info@sandboxstud.io"
-              className="underline tracking-wide font-barlow"
+              className="underline tracking-wide font-barlow text-grayscale-300 text-sm"
             >
               info@sandboxstud.io
             </a>
-          </div>
+          </div> */}
         </motion.div>
 
         <motion.div
@@ -62,15 +64,17 @@ const ContactView: FC<Props> = (props: Props) => {
           <ContactForm />
         </motion.div>
         <motion.div
-          className="flex lg:hidden flex-col mb-6"
+          className="flex  flex-col mb-6  -mt-6"
           variants={introItemVariants}
         >
-          <p className="text-white font-light">Hate contact forms?</p>
+          <p className="font-light text-sm text-grayscale-200">
+            Hate contact forms?
+          </p>
           <a
             rel="noreferrer"
             target="_blank"
             href="mailto:info@sandboxstud.io"
-            className="underline tracking-wide font-barlow"
+            className="underline tracking-wide font-barlow text-sm text-grayscale-200"
           >
             info@sandboxstud.io
           </a>

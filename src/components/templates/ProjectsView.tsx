@@ -28,7 +28,7 @@ const ProjectsView: FC<Props> = (props: Props) => {
 
   return (
     <div className="flex flex-col">
-      <div className="page-py page-pl relative self-center w-full h-full items-center justify-center">
+      <div className="page-py page-pl relative self-center w-full min-h-[90svh] items-center justify-center">
         <BackgroundImage setAssets={setAssets} />
         <motion.div
           className="flex flex-col gap-0 md:gap-12"

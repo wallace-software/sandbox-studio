@@ -19,15 +19,13 @@ const AboutView: FC<Props> = (props: Props) => {
   const [winWidth, winHeight] = useWindowSize();
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col h-full">
       <div
-        className={`page-py page-px relative max-w-[1440px] self-center w-full h-full items-center justify-center ${
-          winHeight > 1024 ? "min-h-[50%]" : "xl:min-h-screen 3xl:min-h-[75%]"
-        }`}
+        className={`page-py page-px relative max-w-[1440px] self-center w-full items-center justify-center min-h-[88svh] h-full`}
       >
         <BackgroundImage setAssets={setAssets} />
         <motion.div
-          className="flex flex-col gap-2"
+          className="flex flex-col gap-2 flex-grow h-full items-center justify-center 3xl:mt-20"
           variants={introContainerVariants}
           initial="hidden"
           animate={showView ? "show" : "hidden"}

@@ -98,7 +98,7 @@ const ContactForm: FC<ContactFormProps> = ({
   return (
     <AnimatePresence mode="wait">
       {submissionStatus === "success" ? (
-        <motion.div className="text-white w-full lg:w-[815px] h-[398px] md:h-[340px] flex flex-col py-10">
+        <motion.div className="text-white w-full lg:w-[815px] h-[398px] md:h-[340px] flex flex-col pt-10">
           <p className="text-xl md:text-2xl">Thank you for your message 🎉</p>
           <p className="text-xl md:text-2xl opacity-60">
             We will get back to you shortly

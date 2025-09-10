@@ -28,7 +28,7 @@ const ProjectsView: FC<Props> = (props: Props) => {
 
   return (
     <div className="flex flex-col">
-      <div className="page-py page-pl relative self-center w-full min-h-[90svh] items-center justify-center">
+      <div className="page-py page-pl relative self-center w-full min-h-[88svh] items-center justify-center">
         <BackgroundImage setAssets={setAssets} />
         <motion.div
           className="flex flex-col gap-0 md:gap-12"
@@ -52,6 +52,7 @@ const ProjectsView: FC<Props> = (props: Props) => {
           </motion.div>
         </motion.div>
       </div>
+      <hr className="border-white border-opacity-10 top-margin" />
       <LetsWorkLink />
     </div>
   );

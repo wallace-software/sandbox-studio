@@ -14,14 +14,13 @@ const NavigationItem: FC<NavigationItemProps> = (
   const router = useRouter();
   const [active, setActive] = useState(router.asPath === item.href);
 
-  if (item.hide) {
-    return null; // If hide is true, do not render the item
-  }
-
   useEffect(() => {
     setActive(router.asPath === item.href);
   }, [router.asPath]);
 
+  if (item.hide) {
+    return null; // If hide is true, do not render the item
+  }
   return (
     <Link
       href={item.href}

@@ -13,7 +13,7 @@ const ProjectItemDetails: FC<Props> = (props: Props) => {
 
   return (
     <motion.section
-      className="container-bottom-border page-pt page-px lg:h-screen w-full relative flex flex-col justify-end items-center gap-8"
+      className="container-bottom-border section-pt page-px lg:h-screen w-full relative flex flex-col justify-end items-center gap-8"
       variants={stagger(0.15, 0.08)} // stage children
       initial="hidden"
       whileInView="show"

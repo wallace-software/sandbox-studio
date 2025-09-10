@@ -21,18 +21,18 @@ const ProjectItemView: FC<Props> = (props: Props) => {
 
   const project = projectsData.find((proj) => proj.id === id);
 
+  if (!project) {
+    return null;
+  }
+
   return (
     <div className="flex flex-col">
       <BackgroundImage setAssets={setAssets} fixed={false} />
-      {project && (
-        <>
-          <ProjectItemIntro project={project} />
-          <ProjectItemGallery project={project} />
-          <ProjectItemDetails project={project} />
-          <ProjectItemFinale project={project} />
-          <LetsWorkLink />
-        </>
-      )}
+      <ProjectItemIntro project={project} />
+      <ProjectItemGallery project={project} />
+      <ProjectItemDetails project={project} />
+      <ProjectItemFinale project={project} />
+      <LetsWorkLink />
     </div>
   );
 };

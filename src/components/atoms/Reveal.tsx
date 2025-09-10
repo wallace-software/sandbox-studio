@@ -19,6 +19,7 @@ export const Reveal = forwardRef<HTMLDivElement, RevealProps>(
       initial="hidden"
       whileInView={animate ? "show" : "hidden"}
       viewport={{ amount, once }}
+      transition={{ duration: 1, ease: "easeInOut" }}
       {...rest}
     >
       {children}

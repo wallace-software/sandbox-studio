@@ -17,7 +17,7 @@ const AboutView: FC<Props> = (props: Props) => {
   const { setAssets } = props;
   const { showView } = useViewStore();
   const [winWidth, winHeight] = useWindowSize();
-  console.log("AboutView rendered", winWidth, winHeight);
+
   return (
     <div className="flex flex-col">
       <div

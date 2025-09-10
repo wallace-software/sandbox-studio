@@ -87,8 +87,9 @@ export const widgetButtonVariants = {
 
 
 export const introContainerVariants = {
-  hidden: {}, // Initial state
+  hidden: {opacity: 0}, // Initial state
   show: {
+    opacity: 1,
     transition: {
       staggerChildren: 0.25, // Delay between child animations
       delayChildren: 0.3, // Delay before starting child animations
@@ -98,7 +99,7 @@ export const introContainerVariants = {
 
 export const introItemVariants = {
   hidden: { opacity: 0, y: 30 }, // Start off-screen (below)
-  show: { opacity: 1, y: 0, transition: { ease: "easeOut", duration: 0.6 } }, // Animate into view
+  show: { opacity: 1, y: 0, transition: { ease: "easeOut", duration: 0.4 } }, // Animate into view
 };
 
 

@@ -23,7 +23,7 @@ const NavigationItem: FC<NavigationItemProps> = (
       href={item.href}
       className={`text-base font-barlow font-medium py-1 ${
         active
-          ? "text-sand-300"
+          ? "text-sand-300 cursor-default"
           : "text-grayscale-200 hover:text-sand-300 transition-200"
       }`}
     >

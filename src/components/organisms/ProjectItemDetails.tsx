@@ -14,15 +14,15 @@ const ProjectItemDetails: FC<Props> = (props: Props) => {
   return (
     <motion.section
       className="container-bottom-border section-pt page-px lg:h-screen w-full relative flex flex-col justify-end items-center gap-8"
-      variants={stagger(0.15, 0.08)} // stage children
+      variants={stagger(0.2, 0.2)}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, amount: 0.4 }} // trigger when ~40% visible
+      viewport={{ once: true, amount: 0.4 }}
     >
       {/* Text block: internal micro-stagger for h2 -> p */}
       <motion.div
         className="col-centered gap-8 mb-12"
-        variants={stagger(0.05, 0.06)}
+        variants={stagger(0.2, 0.2)}
       >
         <motion.h2
           className="max-w-[700px] xl:max-w-[830px] text-center text-white"

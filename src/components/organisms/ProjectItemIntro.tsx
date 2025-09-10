@@ -6,6 +6,7 @@ import {
   introItemVariants,
   ProjectItemData,
   scaleInSoft,
+  stagger,
 } from "@constants";
 import { renderGoldText } from "@utils";
 import { useViewStore } from "@contexts";
@@ -20,18 +21,19 @@ const ProjectItemIntro: FC<IntroProps> = (props: IntroProps) => {
   return (
     <motion.section
       className="container-bottom-border pt-24 md:pt-32 xl:pt-[100px] page-px h-screen w-full relative col-centered"
-      variants={introContainerVariants}
+      variants={stagger(0.2, 0.2)}
       initial="hidden"
       animate={showView ? "show" : "hidden"}
+      viewport={{ once: true, amount: 0.4 }}
     >
       <div className="col-centered gap-12 md:gap-8 xl:gap-4 flex-grow">
-        <motion.p variants={introItemVariants} className="text-white">
+        <motion.p variants={fadeInUp} className="text-white">
           {project.name}
         </motion.p>
 
         <motion.div
           className="col-centered gap-12 md:gap-8 xl:gap-4"
-          variants={introItemVariants}
+          variants={fadeInUp}
         >
           <h1 className="max-w-[700px] xl:max-w-[800px] text-center">
             {renderGoldText(project.intro.header)}
@@ -42,7 +44,7 @@ const ProjectItemIntro: FC<IntroProps> = (props: IntroProps) => {
       </div>
 
       <motion.div
-        variants={introItemVariants}
+        variants={fadeInUp}
         className="flex flex-col items-end justify-end"
       >
         <ProjectItemFrame videoId={project.intro.videoId} />

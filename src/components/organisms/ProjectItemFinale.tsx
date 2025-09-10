@@ -14,10 +14,10 @@ const ProjectItemFinale: FC<Props> = (props: Props) => {
   return (
     <motion.section
       className="container-bottom-border section-py  page-px lg:h-screen w-full relative flex flex-col xl:flex-row xl:items-center xl:justify-between 3xl:justify-center gap-8 pb-4"
-      variants={stagger(0.15, 0.08)} // orchestrate children
+      variants={stagger(0.2, 0.2)} // orchestrate children
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, amount: 0.3, margin: "-120px 0px -120px 0px" }} // trigger later
+      viewport={{ once: true, amount: 0.4, margin: "-120px 0px -120px 0px" }} // trigger later
     >
       {/* Text block with internal micro-stagger */}
       <motion.div

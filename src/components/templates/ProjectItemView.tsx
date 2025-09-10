@@ -15,6 +15,16 @@ interface Props {
   id?: string | string[] | undefined;
 }
 
+// Simple 404 component
+const NotFound: FC = () => (
+  <div className="flex flex-col items-center justify-center min-h-[85vh]  text-center">
+    <h1 className="text-3xl font-bold mb-4">404 - Project Not Found</h1>
+    <p className="text-lg text-gray-400">
+      Sorry, we couldn't find that project.
+    </p>
+  </div>
+);
+
 //main component
 const ProjectItemView: FC<Props> = (props: Props) => {
   const { setAssets, id } = props;
@@ -22,7 +32,7 @@ const ProjectItemView: FC<Props> = (props: Props) => {
   const project = projectsData.find((proj) => proj.id === id);
 
   if (!project) {
-    return null;
+    return <NotFound />;
   }
 
   return (

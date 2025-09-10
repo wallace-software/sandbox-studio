@@ -20,28 +20,24 @@ const ProjectItemGallery: FC<Props> = (props: Props) => {
   const [winWidth] = useWindowSize();
 
   return (
-    <section className="container-bottom-border section-pt page-pl relative self-center w-full h-full  items-center justify-center">
+    <motion.section
+      className="container-bottom-border section-pt page-pl relative self-center w-full h-full  items-center justify-center"
+      variants={stagger(0.2, 0.2)}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.4 }}
+    >
       <div className="flex flex-col gap-12 md:gap-12">
         {/* Section header: simple reveals */}
         <div className="col-start gap-8 max-w-[730px]">
-          <Reveal variants={fadeInUp}>
-            <h2 className="text-white">
-              {renderGoldText(project.gallery.header)}
-            </h2>
-          </Reveal>
-          <Reveal variants={fadeInUp} amount={0.5}>
-            <p>{project.gallery.subheader}</p>
-          </Reveal>
+          <motion.h2 className="text-white" variants={fadeInUp}>
+            {renderGoldText(project.gallery.header)}
+          </motion.h2>
+          <motion.p variants={fadeInUp}>{project.gallery.subheader}</motion.p>
         </div>
 
         {/* Items: parent controls the stagger; children only declare variants */}
-        <motion.div
-          className="w-full"
-          variants={stagger(0.15, 0.08)}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.2 }}
-        >
+        <motion.div className="w-full" variants={fadeInUp}>
           <Gallery
             galleryItemGap="gap-10 xl:gap-20"
             itemGap={winWidth < 1280 ? 40 : 80}
@@ -67,38 +63,8 @@ const ProjectItemGallery: FC<Props> = (props: Props) => {
           </Gallery>
         </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 };
-
-/*<div className="container-bottom-border page-pt page-pl relative self-center w-full h-full lg:h-screen items-center justify-center">
-      <div className="flex flex-col gap-12 md:gap-12">
-        <div className="col-start gap-8 max-w-[730px]">
-          <h2 className="text-white">
-            {renderGoldText(project.gallery.header)}
-          </h2>
-          <p>{project.gallery.subheader}</p>
-        </div>
-        <div className="w-full">
-          <Gallery
-            galleryItemGap={"gap-10 xl:gap-20"}
-            itemGap={winWidth < 1280 ? 40 : 80}
-          >
-            {galleryData.map((item, i) => (
-              <CloudflareVideoPlayer
-                key={i}
-                videoId={item.videoId}
-                quality={480}
-                autoplay
-                muted
-                loop
-                playsInline
-                className="three-part-border relative w-[320px] md:w-[730px] h-[300px] md:h-[538px] !rounded-t-3xl object-scale-down"
-              />
-            ))}
-          </Gallery>
-        </div>
-      </div>
-    </div>*/
 
 export default ProjectItemGallery;

@@ -208,7 +208,7 @@ h3{
   @apply rounded-t-3xl border-t-[4px] md:border-t-[16px] border-x-[4px] md:border-x-[16px] border-sand;
 }
 .full-gold-border {
-  @apply rounded-3xl border-[4px] md:border-[16px]  border-sand;
+  @apply rounded-3xl border-[4px] md:border-[16px] border-sand;
 }
 
 .icon-hover {

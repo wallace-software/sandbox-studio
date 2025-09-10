@@ -1,57 +1,27 @@
 "use client";
 
-import { FC, useRef } from "react";
+import { FC } from "react";
 import { Button, Gallery, GalleryItem } from "@components";
-import { galleryData } from "@constants";
-import { useViewStore } from "@contexts";
-import { motion, useInView } from "framer-motion";
-
-// Animation variants for the container
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.5, // Stagger child animations
-      delayChildren: 0.3, // Delay before starting child animations
-    },
-  },
-};
-
-// Animation variants for individual items
-const itemVariants = {
-  hidden: { opacity: 0, y: 50 }, // Start with opacity 0 and slide down
-  visible: {
-    opacity: 1,
-    y: 0, // Slide up to its original position
-    transition: {
-      duration: 0.6, // Duration of the animation
-      ease: "easeOut", // Smooth easing
-    },
-  },
-};
+import { fadeInUp, galleryData, stagger } from "@constants";
+import { motion } from "framer-motion";
 
 const ProjectGallery: FC = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-35% 0px" });
-  const { showView } = useViewStore();
-
   return (
     <motion.div
       className="landing-container-left vertical-padding  flex flex-col justify-center 2010:items-center"
-      ref={ref}
-      variants={containerVariants}
+      variants={stagger(0.2, 0.2)}
       initial="hidden"
-      animate={isInView && showView ? "visible" : "hidden"}
+      whileInView="show"
+      viewport={{ once: true, amount: 0.3 }}
     >
       <div className="flex flex-col items-start justify-center gap-6 h-full max-w-[1864px]">
         {/* Heading */}
-        <motion.div variants={itemVariants}>
+        <motion.div variants={fadeInUp}>
           <h2 className="mb-3">Our work.</h2>
           <h2 className="text-sand">Take a look.</h2>
         </motion.div>
         {/* Gallery */}
-        <motion.div variants={itemVariants} className="w-full">
+        <motion.div variants={fadeInUp} className="w-full">
           <Gallery arrowsAligned="right" roundedParent>
             {galleryData.map((item, i) => (
               <GalleryItem key={i} data={item} />
@@ -60,7 +30,7 @@ const ProjectGallery: FC = () => {
         </motion.div>
 
         {/* Button */}
-        <motion.div variants={itemVariants}>
+        <motion.div variants={fadeInUp}>
           <Button
             title="See more projects"
             link="/projects"

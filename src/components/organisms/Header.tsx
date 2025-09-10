@@ -9,6 +9,7 @@ import {
 } from "@components";
 import { menuItems, midEnterAnimation } from "@constants";
 import { useWindowSize } from "@hooks";
+import { useRouter } from "next/router";
 
 interface Props {
   showHeader?: boolean;
@@ -74,6 +75,8 @@ const HeaderItems: FC = () => {
   const [open, setOpen] = useState(false);
   const [winWidth] = useWindowSize();
 
+  const { pathname } = useRouter();
+  const isEstimatePage = pathname === menuItems[menuItems.length - 1].href;
   return (
     <div
       className="page-px flex items-center justify-between w-full py-4 md:py-8 z-20 bg-transparent"
@@ -89,8 +92,12 @@ const HeaderItems: FC = () => {
           ))}
           <Link
             href={menuItems[menuItems.length - 1].href}
-            className="text-base font-barlow font-semibold w-[166px] h-[36px] col-centered rounded-3xl 
-              transition-200 text-black bg-sand hover:text-sand-300 hover:bg-batman border-2 border-sand"
+            className={`text-base font-barlow font-semibold w-[166px] h-[36px] col-centered rounded-3xl transition-200 border-2 border-sand
+              ${
+                isEstimatePage
+                  ? "text-sand-300 bg-batman cursor-default"
+                  : "text-black bg-sand hover:text-sand-300 hover:bg-batman"
+              }`}
           >
             Get an Estimate
           </Link>

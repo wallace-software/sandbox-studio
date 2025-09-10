@@ -1,12 +1,23 @@
 import { FC } from "react";
 import { Button, HeroVideo } from "@components";
 import Image from "next/image";
+import { stagger, fadeInUp } from "@constants";
+import { motion } from "framer-motion";
 
 const About: FC = () => {
   return (
-    <div className="landing-container col-centered max-w-screen overflow-hidden py-16 lg:py-10">
+    <motion.div
+      className="landing-container col-centered max-w-screen overflow-hidden py-16 lg:py-10"
+      variants={stagger(0.2, 0.2)}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.5 }}
+    >
       <div className="flex flex-col xl:flex-row gap-16 xl:gap-32 max-w-[1256px]">
-        <div className="flex flex-col gap-10 xl:gap-14 max-w-[608px]">
+        <motion.div
+          className="flex flex-col gap-10 xl:gap-14 max-w-[608px]"
+          variants={fadeInUp}
+        >
           <div>
             <h2 className="mb-3">Our team.</h2>
             <h2 className="text-sand">Learn more.</h2>
@@ -24,11 +35,16 @@ const About: FC = () => {
             </p>
           </div>
           <Button title="About us" link="/about" />
-        </div>
+        </motion.div>
 
-        <HeroVideo />
+        <motion.div
+          variants={fadeInUp}
+          className="flex flex-col xl:items-center xl:justify-center flex-grow"
+        >
+          <HeroVideo />
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

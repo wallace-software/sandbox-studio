@@ -1,6 +1,6 @@
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { FC, useRef, useState } from "react";
-import { Client, clients } from "@constants";
+import { Client, clients, fadeIn, fadeInUp, stagger } from "@constants";
 import { TestimonialsItem } from "@components";
 import { useWindowSize } from "@hooks";
 
@@ -28,14 +28,22 @@ const Testimonials: FC = () => {
   };
 
   return (
-    <div className="landing-container lg:flex justify-center overflow-hidden  vertical-padding">
+    <motion.div
+      className="landing-container lg:flex justify-center overflow-hidden  vertical-padding"
+      variants={stagger(0.2, 0.2)}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.3 }}
+    >
       <div className="max-w-[1256px] ">
-        <h2 className="mb-3">Testimonials.</h2>
-        <h2 className="text-sand">Our wall of love.</h2>
-
-        <div
+        <motion.div variants={fadeInUp}>
+          <h2 className="mb-3">Testimonials.</h2>
+          <h2 className="text-sand">Our wall of love.</h2>
+        </motion.div>
+        <motion.div
           className="mt-20 flex border-b border-white/20 overflow-x-auto"
           ref={containerRef}
+          variants={fadeInUp}
         >
           {clients.map((testimonial, index) => {
             if (testimonial.testimonial) {
@@ -55,17 +63,20 @@ const Testimonials: FC = () => {
               );
             }
           })}
-        </div>
-        <div className="flex items-start h-full min-h-[400px]">
+        </motion.div>
+        <motion.div
+          className="flex items-start h-full min-h-[400px]"
+          variants={fadeInUp}
+        >
           <AnimatePresence mode="wait">
             <TestimonialsItem
               selectedTestimonial={selectedTestimonial}
               key={selectedTestimonial.id}
             />
           </AnimatePresence>
-        </div>
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

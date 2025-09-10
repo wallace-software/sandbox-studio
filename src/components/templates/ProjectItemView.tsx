@@ -20,7 +20,7 @@ const NotFound: FC = () => (
   <div className="flex flex-col items-center justify-center min-h-[85vh]  text-center">
     <h1 className="text-3xl font-bold mb-4">404 - Project Not Found</h1>
     <p className="text-lg text-gray-400">
-      Sorry, we couldn't find that project.
+      Sorry, we couldn&apos;t find that project.
     </p>
   </div>
 );

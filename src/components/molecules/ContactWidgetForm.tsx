@@ -94,9 +94,10 @@ const ContactWidgetForm: FC<Props> = (props: Props) => {
       }}
       animate={{ scale: 1, opacity: 1, clipPath: "inset(0% 0% 0% 0%)" }}
       exit={{
-        scale: 0.9,
+        scale: 0.5,
         opacity: 0,
-        clipPath: "inset(100% 100% 100% 100%)",
+        // clipPath: "inset(100% 100% 100% 100%)",
+        transition: { duration: 0.2, ease: "easeInOut" },
       }}
       transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }} // springy ease
     >

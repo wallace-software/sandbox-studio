@@ -69,8 +69,13 @@ const ProjectGalleryItem: FC<ProjectGalleryItemProps> = ({ data }) => {
   };
 
   return (
-    <div className="relative w-[320px] md:w-[608px] h-auto md:h-[555px] flex flex-col gap-10 pt-10 pl-5">
-      <div className="full-gold-border w-[280px] md:w-[560px] h-[189px] md:h-[378.5px] bg-white/40 rounded-2xl overflow-hidden">
+    <div className="relative w-[320px] md:w-[608px] h-auto md:h-[555px] flex flex-col gap-6 pt-10 pl-5">
+      <div
+        className="full-gold-border w-[280px] md:w-[560px] h-[189px] md:h-[378.5px] bg-white/40 rounded-2xl overflow-hidden cursor-pointer"
+        onClick={() =>
+          handleClick(data.title.toLocaleLowerCase().replace(" ", "-"))
+        }
+      >
         <CloudflareVideoPlayer
           videoId={data.videoId}
           quality={480}
@@ -83,7 +88,7 @@ const ProjectGalleryItem: FC<ProjectGalleryItemProps> = ({ data }) => {
 
       <div className="flex w-full justify-between items-end gap-4">
         <div
-          className={`flex flex-col gap-1 justify-center max-w-[380px] -ml-2 md:-ml-4 ${data.textColor}`}
+          className={`flex flex-col gap-1 justify-center max-w-[380px] ${data.textColor}`}
         >
           <h3 className="">{data.title}</h3>
           <p className="">

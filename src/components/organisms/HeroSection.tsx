@@ -25,12 +25,12 @@ const LandingScreen: FC = () => {
 
   return (
     <motion.div
-      className="min-h-[100svh] col-centered max-w-screen overflow-hidden border-b border-white border-opacity-10 px-5 lg:px-0 pt-[64px]"
+      className="min-h-[100svh] col-centered max-w-screen overflow-hidden border-b border-white border-opacity-10 px-5 lg:px-0 pt-[64px] 2xl:pt-[10vh]"
       variants={introContainerVariants}
       initial="hidden"
       animate={hasAnimated ? "show" : "hidden"}
     >
-      <motion.div className="flex flex-col lg:items-center lg:justify-center max-w-[90vw] xl:max-w-[1256px] 2xl:max-w-[1512px] gap-16 md:gap-24 lg:gap-10 2xl:gap-24">
+      <motion.div className="flex flex-col lg:items-center lg:justify-center max-w-[90vw] xl:max-w-[1256px] 2xl:max-w-[1512px] gap-16 md:gap-24 lg:gap-10 2xl:gap-20">
         {/* Heading */}
         <motion.div
           variants={introItemVariants}

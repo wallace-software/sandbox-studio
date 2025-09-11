@@ -70,7 +70,7 @@ const ProjectGalleryItem: FC<ProjectGalleryItemProps> = ({ data }) => {
 
   return (
     <div className="relative w-[320px] md:w-[608px] h-auto md:h-[555px] flex flex-col gap-10 pt-10 pl-5">
-      <div className="w-[280px] md:w-[560px] h-[189px] md:h-[378.5px] bg-white/40 rounded-2xl overflow-hidden outline outline-[12px] md:outline-[20px] outline-sand">
+      <div className="full-gold-border w-[280px] md:w-[560px] h-[189px] md:h-[378.5px] bg-white/40 rounded-2xl overflow-hidden">
         <CloudflareVideoPlayer
           videoId={data.videoId}
           quality={480}

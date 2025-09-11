@@ -11,7 +11,7 @@ const TeamMemberCard: FC<Props> = (props: Props) => {
   const { member } = props;
   return (
     <div className="flex flex-col rounded-t-3xl overflow-hidden max-w-[400px] gap-2">
-      <div className="w-[400px] h-[444px] overflow-hidden group">
+      <div className="w-[360px] lg:w-[300px] xl:w-[400px] overflow-hidden group">
         <Image
           src={member.image}
           alt={member.name}

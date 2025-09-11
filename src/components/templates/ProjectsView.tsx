@@ -28,10 +28,10 @@ const ProjectsView: FC<Props> = (props: Props) => {
 
   return (
     <div className="flex flex-col">
-      <div className="page-py page-pl relative self-center w-full min-h-[88svh] items-center justify-center">
+      <div className="page-min-h page-py page-pl relative self-center w-full items-center justify-center">
         <BackgroundImage setAssets={setAssets} />
         <motion.div
-          className="flex flex-col gap-0 md:gap-12"
+          className="flex flex-col gap-0 md:gap-12 mt-10"
           variants={introContainerVariants}
           initial="hidden"
           animate={showView ? "show" : "hidden"}

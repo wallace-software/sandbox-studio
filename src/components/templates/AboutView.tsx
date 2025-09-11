@@ -21,11 +21,11 @@ const AboutView: FC<Props> = (props: Props) => {
   return (
     <div className="flex flex-col h-full">
       <div
-        className={`page-py page-px relative max-w-[1440px] self-center w-full items-center justify-center min-h-[88svh] h-full`}
+        className={`page-min-h page-py page-px relative max-w-[1440px] self-center w-full items-center justify-center h-full`}
       >
         <BackgroundImage setAssets={setAssets} />
         <motion.div
-          className="flex flex-col gap-2 flex-grow h-full items-center justify-center 3xl:mt-20"
+          className="flex flex-col gap-2 flex-grow h-full sm:items-center justify-center mt-10 3xl:mt-20"
           variants={introContainerVariants}
           initial="hidden"
           animate={showView ? "show" : "hidden"}
@@ -35,7 +35,7 @@ const AboutView: FC<Props> = (props: Props) => {
           </motion.h1>
           <motion.p
             variants={introItemVariants}
-            className="subheading max-w-[700px] pb-8"
+            className="subheading max-w-[500px] lg:max-w-[700px] pb-8"
           >
             Our team is a tight-knit unit of talented individuals. Years of
             collaboration has made us not only a team with strong chemistry, but
@@ -43,7 +43,7 @@ const AboutView: FC<Props> = (props: Props) => {
           </motion.p>
           {/* Team Members */}
           <motion.div
-            className="flex flex-col md:flex-row justify-between items-center gap-10 md:gap-4 xl:gap-8 3xl:gap-10 px-4 md:px-0"
+            className="flex flex-col lg:flex-row justify-between items-center gap-10 md:gap-4 xl:gap-8 3xl:gap-10 px-4 md:px-0"
             variants={introItemVariants}
           >
             {teamMembers.map((member, index) => (

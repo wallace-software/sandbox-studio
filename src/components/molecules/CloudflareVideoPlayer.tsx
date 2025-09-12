@@ -4,7 +4,7 @@ import "video.js/dist/video-js.css";
 import "videojs-contrib-quality-levels";
 
 interface CloudflareVideoPlayerProps extends React.HTMLProps<HTMLVideoElement> {
-  videoId: string;
+  videoId?: string;
   autoplay?: boolean;
   muted?: boolean;
   loop?: boolean;
@@ -14,7 +14,7 @@ interface CloudflareVideoPlayerProps extends React.HTMLProps<HTMLVideoElement> {
 }
 
 const CloudflareVideoPlayer = ({
-  videoId,
+  videoId = "dd20e765bdeb6307d8b0c1a1399c8b83",
   autoplay = false,
   muted = false,
   loop = false,

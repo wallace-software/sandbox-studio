@@ -20,19 +20,19 @@ const ProjectItemIntro: FC<IntroProps> = (props: IntroProps) => {
   const { showView } = useViewStore();
   return (
     <motion.section
-      className="container-bottom-border pt-24 md:pt-32 xl:pt-[100px] page-px h-screen w-full relative col-centered"
+      className="page-min-h-2 container-bottom-border page-px page-pt w-full relative col-centered gap-16 overflow-hidden"
       variants={stagger(0.2, 0.2)}
       initial="hidden"
       animate={showView ? "show" : "hidden"}
       viewport={{ once: true, amount: 0.4 }}
     >
-      <div className="col-centered gap-12 md:gap-8 xl:gap-4 flex-grow">
+      <div className="col-centered gap-6 md:gap-8 xl:gap-4 flex-grow">
         <motion.p variants={fadeInUp} className="text-white">
           {project.name}
         </motion.p>
 
         <motion.div
-          className="col-centered gap-12 md:gap-8 xl:gap-4"
+          className="col-centered gap-6 md:gap-8 xl:gap-4"
           variants={fadeInUp}
         >
           <h1 className="max-w-[700px] xl:max-w-[800px] text-center">

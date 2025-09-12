@@ -205,10 +205,10 @@ h3{
 
 /* Custom */
 .three-part-border {
-  @apply rounded-t-3xl border-t-[3px] md:border-t-[16px] border-x-[3px] md:border-x-[16px] border-sand;
+  @apply rounded-t-xl md:rounded-t-3xl border-t-[3px] md:border-t-[16px] border-x-[3px] md:border-x-[16px] border-sand;
 }
 .full-gold-border {
-  @apply rounded-3xl border-[3px] md:border-[16px] border-sand;
+  @apply rounded-xl md:rounded-3xl border-[3px] md:border-[16px] border-sand;
 }
 
 .icon-hover {
@@ -257,7 +257,12 @@ h3{
 .page-my {
   @apply mt-24 xl:mt-32;
 }
-
+.page-min-h {
+  @apply min-h-[75svh] xl:min-h-[88svh];
+}
+.page-min-h-2  {
+  @apply min-h-[78svh] xl:h-[100svh];
+}
 .section-py {
   @apply py-16 md:py-20 xl:py-24;
 }

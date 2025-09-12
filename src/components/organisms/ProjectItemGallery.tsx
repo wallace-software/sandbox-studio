@@ -56,7 +56,7 @@ const ProjectItemGallery: FC<Props> = (props: Props) => {
                   muted
                   loop
                   playsInline
-                  className="three-part-border relative w-[320px] md:w-[730px] h-[300px] md:h-[538px] !rounded-t-3xl object-scale-down"
+                  className="overflow-hidden three-part-border relative w-[320px] md:w-[730px] h-[300px] md:h-[538px] !rounded-t-3xl object-scale-down"
                 />
               </motion.div>
             ))}

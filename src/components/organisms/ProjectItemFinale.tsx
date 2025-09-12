@@ -13,7 +13,7 @@ const ProjectItemFinale: FC<Props> = (props: Props) => {
 
   return (
     <motion.section
-      className="container-bottom-border section-py  page-px lg:h-screen w-full relative flex flex-col xl:flex-row xl:items-center xl:justify-between 3xl:justify-center gap-8 pb-4"
+      className="container-bottom-border section-py  page-px lg:h-screen w-full relative flex flex-col xl:flex-row xl:items-center xl:justify-between 3xl:justify-center gap-8 pb-4 overflow-hidden"
       variants={stagger(0.2, 0.2)} // orchestrate children
       initial="hidden"
       whileInView="show"
@@ -21,7 +21,7 @@ const ProjectItemFinale: FC<Props> = (props: Props) => {
     >
       {/* Text block with internal micro-stagger */}
       <motion.div
-        className="col-start gap-8 md:mb-12 max-w-[400px] xl:ml-36 2xl:ml-48 3xl:ml-0"
+        className="overflow-hidden col-start gap-8 md:mb-12 max-w-[400px] xl:ml-36 2xl:ml-48 3xl:ml-0"
         variants={stagger(0.06, 0.06)}
       >
         <motion.h2 className="text-white" variants={fadeInUp}>
@@ -57,7 +57,7 @@ const ProjectItemFinale: FC<Props> = (props: Props) => {
       >
         <ProjectItemFrame
           videoId={project.finale.videoId}
-          className="full-gold-border"
+          border="full-gold-border"
         />
       </motion.div>
     </motion.section>

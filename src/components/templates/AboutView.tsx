@@ -25,7 +25,7 @@ const AboutView: FC<Props> = (props: Props) => {
       >
         <BackgroundImage setAssets={setAssets} />
         <motion.div
-          className="flex flex-col gap-2 flex-grow h-full sm:items-center justify-center mt-10 3xl:mt-20"
+          className="flex flex-col gap-2 flex-grow h-full sm:items-center justify-center 2xl:mt-10 3xl:mt-20"
           variants={introContainerVariants}
           initial="hidden"
           animate={showView ? "show" : "hidden"}

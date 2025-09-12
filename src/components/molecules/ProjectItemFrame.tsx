@@ -3,9 +3,11 @@ import { CloudflareVideoPlayer } from "@components";
 
 interface Props extends React.HTMLProps<HTMLDivElement> {
   videoId?: string;
+  border?: string;
 }
 const ProjectItemFrame: FC<Props> = ({
   videoId = "dd20e765bdeb6307d8b0c1a1399c8b83",
+  border = "three-part-border",
   ...props
 }) => {
   const [isPlaying, setPlaying] = useState(false);
@@ -18,7 +20,7 @@ const ProjectItemFrame: FC<Props> = ({
     <div
       className={`relative   
         w-[300px] md:!w-[700px] xl:!w-[800px] 2xl:!w-[1000px] aspect-video  
-        bg-black/70 overflow-hidden ${props.className ?? "three-part-border"}`}
+        bg-black/70 overflow-hidden ${props.className ?? ""} ${border}`}
       onClick={() => {
         if (!isPlaying) setPlaying(true);
       }}

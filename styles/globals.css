@@ -264,7 +264,7 @@ h3{
   @apply min-h-[78svh] xl:h-[100svh];
 }
 .section-py {
-  @apply py-16 md:py-20 xl:py-24;
+  @apply pt-16 pb-8 md:py-20 xl:py-24;
 }
 .section-pt {
   @apply pt-16 md:pt-20 xl:pt-24;

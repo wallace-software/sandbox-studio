@@ -1,5 +1,6 @@
 import { FC, useEffect, useState } from "react";
 import { CloudflareVideoPlayer } from "@components";
+import clsx from "clsx";
 
 interface Props extends React.HTMLProps<HTMLDivElement> {
   videoId?: string;
@@ -18,9 +19,11 @@ const ProjectItemFrame: FC<Props> = ({
 
   return (
     <div
-      className={`relative   
-        w-[300px] md:!w-[700px] xl:!w-[800px] 2xl:!w-[1000px] aspect-video  
-        bg-black/70 overflow-hidden ${props.className ?? ""} ${border}`}
+      className={clsx(
+        "relative w-[300px] md:!w-[700px] xl:!w-[800px] 2xl:!w-[1000px] aspect-video bg-black/70 overflow-hidden",
+        props.className,
+        border
+      )}
       onClick={() => {
         if (!isPlaying) setPlaying(true);
       }}

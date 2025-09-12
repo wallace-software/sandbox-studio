@@ -3,6 +3,7 @@ import { Button, ProjectItemFrame } from "@components";
 import { fadeInUp, ProjectItemData, slideInRight, stagger } from "@constants";
 import { renderGoldText } from "@utils";
 import { motion } from "framer-motion";
+import { useWindowSize } from "@hooks";
 
 interface Props {
   project: ProjectItemData;
@@ -10,6 +11,9 @@ interface Props {
 
 const ProjectItemFinale: FC<Props> = (props: Props) => {
   const { project } = props;
+
+  const [winWidth] = useWindowSize();
+  const isTablet = winWidth < 1280;
 
   return (
     <motion.section
@@ -49,15 +53,13 @@ const ProjectItemFinale: FC<Props> = (props: Props) => {
 
       {/* Frame: soft slide-in from the right */}
       <motion.div
-        className="
-        xl:absolute xl:-right-20 0
-        "
-        variants={slideInRight}
+        className="xl:absolute xl:-right-20 0 "
+        variants={isTablet ? fadeInUp : slideInRight}
         style={{ willChange: "transform" }}
       >
         <ProjectItemFrame
           videoId={project.finale.videoId}
-          border="full-gold-border"
+          border="full-gold-border !w-[90svw]"
         />
       </motion.div>
     </motion.section>

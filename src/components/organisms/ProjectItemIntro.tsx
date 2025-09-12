@@ -20,7 +20,7 @@ const ProjectItemIntro: FC<IntroProps> = (props: IntroProps) => {
   const { showView } = useViewStore();
   return (
     <motion.section
-      className="page-min-h-2 container-bottom-border page-px page-pt w-full relative col-centered gap-16 overflow-hidden"
+      className="page-min-h-2 container-bottom-border px-2 md:px-10 xl:px-16 3xl:px-[5%] page-pt w-full relative col-centered gap-16 overflow-hidden"
       variants={stagger(0.2, 0.2)}
       initial="hidden"
       animate={showView ? "show" : "hidden"}
@@ -47,7 +47,10 @@ const ProjectItemIntro: FC<IntroProps> = (props: IntroProps) => {
         variants={fadeInUp}
         className="flex flex-col items-end justify-end"
       >
-        <ProjectItemFrame videoId={project.intro.videoId} />
+        <ProjectItemFrame
+          videoId={project.intro.videoId}
+          className="!w-[90svw]"
+        />
       </motion.div>
     </motion.section>
   );

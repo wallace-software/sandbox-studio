@@ -113,7 +113,7 @@ const Gallery: FC<GalleryProps> = ({
       )}
       <div
         ref={containerRef}
-        className={`overflow-hidden w-full flex transition-transform duration-500 ease-out ${
+        className={`invisible-scrollbar overflow-hidden w-full flex transition-transform duration-500 ease-out ${
           roundedParent ? "rounded-l-3xl 2010:rounded-r-3xl " : " "
         }
           ${galleryItemGap ?? " gap-5  "}`}

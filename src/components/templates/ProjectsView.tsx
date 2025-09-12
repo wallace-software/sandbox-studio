@@ -71,7 +71,7 @@ const ProjectGalleryItem: FC<ProjectGalleryItemProps> = ({ data }) => {
   return (
     <div className="relative w-[320px] md:w-[608px] h-auto md:h-[555px] flex flex-col gap-6 pt-10 pl-5">
       <div
-        className="full-gold-border w-[280px] md:w-[560px] h-[189px] md:h-[378.5px] bg-white/40 rounded-2xl overflow-hidden cursor-pointer"
+        className="full-gold-border w-[280px] md:w-[560px] h-[191px] md:h-[389px] bg-white/40 rounded-2xl overflow-hidden cursor-pointer"
         onClick={() =>
           handleClick(data.title.toLocaleLowerCase().replace(" ", "-"))
         }

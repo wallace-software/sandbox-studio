@@ -1,5 +1,10 @@
 import { FC } from "react";
-import { Gallery, CloudflareVideoPlayer, Reveal } from "@components";
+import {
+  Gallery,
+  CloudflareVideoPlayer,
+  Reveal,
+  ProjectItemFrame,
+} from "@components";
 import {
   fadeInUp,
   galleryData,
@@ -25,7 +30,7 @@ const ProjectItemGallery: FC<Props> = (props: Props) => {
       variants={stagger(0.2, 0.2)}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, amount: 0.4 }}
+      viewport={{ once: true, amount: 0.6 }}
     >
       <div className="flex flex-col gap-12 md:gap-12">
         {/* Section header: simple reveals */}
@@ -43,13 +48,18 @@ const ProjectItemGallery: FC<Props> = (props: Props) => {
             itemGap={winWidth < 1280 ? 40 : 80}
           >
             {galleryData.map((item: any, i: number) => (
+              <Reveal key={item?.id ?? i} variants={scaleInSoft}>
+                <ProjectItemFrame videoId={project.intro.videoId} />
+              </Reveal>
+            ))}
+            {/* {galleryData.map((item: any, i: number) => (
               <motion.div
                 key={item?.id ?? i}
                 variants={scaleInSoft}
                 whileHover={{ scale: 1.01 }}
                 transition={{ type: "spring", stiffness: 300, damping: 24 }}
               >
-                <CloudflareVideoPlayer
+                  <CloudflareVideoPlayer
                   videoId={item.videoId}
                   quality={480}
                   autoplay
@@ -57,9 +67,9 @@ const ProjectItemGallery: FC<Props> = (props: Props) => {
                   loop
                   playsInline
                   className="overflow-hidden three-part-border relative w-[320px] md:w-[730px] h-[300px] md:h-[538px] !rounded-t-3xl object-scale-down"
-                />
+                />   
               </motion.div>
-            ))}
+            ))} */}
           </Gallery>
         </motion.div>
       </div>

@@ -3,8 +3,13 @@
 import { FC, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useViewStore } from "@contexts";
-import { introContainerVariants, introItemVariants } from "@constants";
+import {
+  introContainerVariants,
+  introItemVariants,
+  slowIntroItemVariants,
+} from "@constants";
 import Image from "next/image";
+import { LogosMarquee } from "@components";
 
 // Optional: small motion variant for logos
 const logoVariants = {
@@ -12,7 +17,7 @@ const logoVariants = {
   show: { opacity: 1, scale: 1, transition: { duration: 0.4 } },
 };
 
-const LandingScreen: FC = () => {
+const HeroSection: FC = () => {
   const { showView } = useViewStore();
 
   const [hasAnimated, setHasAnimated] = useState(false);
@@ -59,7 +64,10 @@ const LandingScreen: FC = () => {
         </motion.div>
 
         {/* Logos */}
-        <motion.div variants={introItemVariants} className="col-centered gap-6">
+        <motion.div
+          variants={slowIntroItemVariants}
+          className="col-centered gap-6 max-w-[900px]"
+        >
           <div className="flex items-center gap-1">
             <p>Trusted by</p>
             <Image
@@ -69,18 +77,14 @@ const LandingScreen: FC = () => {
               height={18}
             />
           </div>
-          <motion.div
-            className="row-centered gap-24"
-            variants={logoVariants}
-            initial="hidden"
-            animate="show"
-          >
-            <div className="relative w-[110px] h-[50px]">
+
+          <LogosMarquee speed={20} className="w-full max-w-screen">
+            <div className="relative w-[110px] h-[50px] shrink-0">
               <Image
                 src={`${process.env.CLOUDFLARE_STORAGE}/images/logos/folio.svg`}
                 alt="Folio"
                 fill
-                className="object-cover"
+                className="object-contain"
               />
             </div>
             <Image
@@ -88,34 +92,34 @@ const LandingScreen: FC = () => {
               alt="Scum"
               width={81}
               height={37}
-              className="object-contain"
+              className="object-contain shrink-0"
             />
             <Image
               src={`${process.env.CLOUDFLARE_STORAGE}/images/logos/casago@3x.png`}
               alt="Casago"
               width={124}
               height={41}
-              className="object-contain"
+              className="object-contain shrink-0"
             />
             <Image
               src={`${process.env.CLOUDFLARE_STORAGE}/images/logos/cyber-frogs.svg`}
               alt="Cyber Frogs"
               width={61}
               height={45}
-              className="object-contain"
+              className="object-contain shrink-0"
             />
             <Image
               src={`${process.env.CLOUDFLARE_STORAGE}/images/logos/somos-axolotl.svg`}
               alt="Somos Axolotl"
               width={137}
               height={38}
-              className="object-contain"
+              className="object-contain shrink-0"
             />
-          </motion.div>
+          </LogosMarquee>
         </motion.div>
       </motion.div>
     </motion.div>
   );
 };
 
-export default LandingScreen;
+export default HeroSection;

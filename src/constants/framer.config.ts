@@ -101,6 +101,10 @@ export const introItemVariants = {
   hidden: { opacity: 0, y: 30 }, // Start off-screen (below)
   show: { opacity: 1, y: 0, transition: { ease: "easeOut", duration: 0.4 } }, // Animate into view
 };
+export const slowIntroItemVariants = {
+  hidden: { opacity: 0, y: 30 }, // Start off-screen (below)
+  show: { opacity: 1, y: 0, transition: { ease: "easeOut", duration: 0.8 } }, // Animate into view
+};
 
 
 export const mobileMenuParent = {

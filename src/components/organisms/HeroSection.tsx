@@ -79,9 +79,9 @@ const HeroSection: FC = () => {
           </div>
 
           <LogosMarquee speed={20} className="w-full max-w-screen">
-            <div className="relative w-[110px] h-[50px] shrink-0">
+            <div className="relative w-[100px] h-[50px] shrink-0">
               <Image
-                src={`${process.env.CLOUDFLARE_STORAGE}/images/logos/folio.svg`}
+                src={`/folio-gray.svg`}
                 alt="Folio"
                 fill
                 className="object-contain"
@@ -90,7 +90,7 @@ const HeroSection: FC = () => {
             <Image
               src={`${process.env.CLOUDFLARE_STORAGE}/images/logos/scum.svg`}
               alt="Scum"
-              width={81}
+              width={100}
               height={37}
               className="object-contain shrink-0"
             />

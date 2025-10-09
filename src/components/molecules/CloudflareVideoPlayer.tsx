@@ -56,21 +56,8 @@ const CloudflareVideoPlayer = ({
           });
 
           player.ready(() => {
-            // console.log(
-            //   "Quality plugin loaded?",
-            //   //@ts-ignore
-            //   typeof player?.qualityLevels === "function"
-            // );
-
             //@ts-ignore
             const qualityLevels = player.qualityLevels?.();
-
-            // console.log("Quality levels object:", qualityLevels);
-            // console.log("Available quality levels:", qualityLevels.levels_);
-            // console.log(
-            //   "Selected quality index:",
-            //   qualityLevels.selectedIndex_
-            // );
 
             if (qualityLevels) {
               // console.log("Quality levels available:", qualityLevels);

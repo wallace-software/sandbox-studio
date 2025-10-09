@@ -5,10 +5,14 @@ import clsx from "clsx";
 interface Props extends React.HTMLProps<HTMLDivElement> {
   videoId?: string;
   border?: string;
+  autoPlay?: boolean;
+  videoClassName?: string;
 }
 const ProjectItemFrame: FC<Props> = ({
   videoId = "dd20e765bdeb6307d8b0c1a1399c8b83",
   border = "three-part-border",
+  autoPlay = false,
+  videoClassName = "",
   ...props
 }) => {
   const [isPlaying, setPlaying] = useState(false);
@@ -61,7 +65,7 @@ const ProjectItemFrame: FC<Props> = ({
           autoplay
           controls
           quality={1080}
-          className="!rounded-t-3xl object-scale-down"
+          className={`!rounded-t-3xl object-scale-down ${videoClassName}`}
         />
       )}
     </div>

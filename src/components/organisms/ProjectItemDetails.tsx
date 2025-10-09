@@ -37,8 +37,17 @@ const ProjectItemDetails: FC<Props> = (props: Props) => {
       </motion.div>
 
       {/* Frame: soft scale/fade entrance */}
-      <motion.div variants={scaleInSoft}>
-        <ProjectItemFrame videoId={project.details.videoId} />
+      <motion.div variants={scaleInSoft} className="relative">
+        <p className="text-white absolute left-[20%] top-7 z-10 px-4 py-1 bg-custom-black rounded-lg">
+          Before
+        </p>
+        <p className="text-white absolute right-[20%] top-7 z-10 px-6 py-1 bg-custom-black rounded-lg">
+          After
+        </p>
+        <ProjectItemFrame
+          videoId={project.details.videoId}
+          className="!aspect-[2696/1240] xl:!w-[900px] 2xl:!w-[1200px] p-0"
+        />
       </motion.div>
     </motion.section>
   );

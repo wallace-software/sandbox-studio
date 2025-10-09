@@ -53,9 +53,9 @@ const ProjectItemFinale: FC<Props> = (props: Props) => {
 
       {/* Frame: soft slide-in from the right */}
       <motion.div
-        className="xl:absolute xl:-right-20 0 "
-        variants={isTablet ? fadeInUp : slideInRight}
-        style={{ willChange: "transform" }}
+        className="xl:absolute xl:-right-20"
+        // variants={isTablet ? fadeInUp : slideInRight}
+        // style={{ willChange: "transform" }}
       >
         <ProjectItemFrame
           videoId={project.finale.videoId}

@@ -23,13 +23,13 @@ export const projectsData: ProjectItemData[] = [
       header: "Refreshing the <gold>website</gold> to look the part.",
       subheader:
         "The new brand needed a website to match. We made sure to make use of what was working before, and rid of everything that was not.",
-      videoId: "dd20e765bdeb6307d8b0c1a1399c8b83",
+      videoId: "719e4554caf38b4e12d208e2e86c1868",
     },
     finale: {
       header: "The grand finale.",
       subheader:
         "The work that goes into the website is great, but delivering the project is the most important. At Sandbox, delivering is our speciality.",
-      videoId: "dd20e765bdeb6307d8b0c1a1399c8b83",
+      videoId: "acbfd849b3b478bf27470a50b15ef727",
       cta: { text: "Visit Site", link: "https://folio-ten-coral.vercel.app/" },
     },
   },

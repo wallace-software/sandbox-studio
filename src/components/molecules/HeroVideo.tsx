@@ -10,7 +10,7 @@ const HeroVideo = () => {
 
   return (
     <div
-      className="full-gold-border relative w-[300px] md:!w-[700px] xl:!w-[700px] aspect-video  bg-black/70 overflow-hidden"
+      className="full-gold-border relative w-[300px] md:!w-[700px] xl:!w-[700px] aspect-[31/18]  bg-black/70 overflow-hidden"
       onClick={() => {
         if (!isPlaying) setPlaying(true);
       }}

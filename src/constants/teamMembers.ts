@@ -21,6 +21,6 @@ export const teamMembers: TeamMember[] = [
     title: "Lead Designer",
     image: `${process.env.CLOUDFLARE_STORAGE}/images/about/sketch-raff.png`,
     twitter: "",
-    linkedin: "https://www.linkedin.com/in/miguel-corzo-12345678/",
+    linkedin: "",
   },
 ];

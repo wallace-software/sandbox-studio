@@ -1,23 +1,23 @@
-import { Dispatch, SetStateAction, useEffect } from "react";
+import { Dispatch, SetStateAction, useEffect, RefObject } from "react";
 
 export const useOutsideAlerter = (
-  ref: any,
-  callback: Dispatch<SetStateAction<boolean>>
+  ref: RefObject<HTMLElement>,
+  callback: Dispatch<SetStateAction<boolean>>,
+  ignoreRef?: RefObject<HTMLElement>
 ) => {
   useEffect(() => {
-    /**
-     * Alert if clicked on outside of element
-     */
-    const handleClickOutside = (event: Event) => {
-      if (ref.current && !ref.current.contains(event.target)) {
-        if (callback) callback(false);
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        ref.current &&
+        !ref.current.contains(event.target as Node) &&
+        (!ignoreRef?.current || !ignoreRef.current.contains(event.target as Node))
+      ) {
+        callback(false);
       }
     };
-    // Bind the event listener
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
-      // Unbind the event listener on clean up
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [ref, callback]);
+  }, [ref, callback, ignoreRef]);
 };

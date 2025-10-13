@@ -1,9 +1,95 @@
-import { Variants } from "framer-motion";
+import { Variants, Transition } from "framer-motion";
+
+export const ease: number[] = [0.22, 1, 0.36, 1]; // sleek "expo" style
+
+export const timings = {
+  fast: 0.35,
+  base: 0.6,
+  slow: 0.9,
+};
+
+export const stagger = (
+  delayChildren = 0.1,
+  staggerChildren = 0.06
+): Variants => ({
+  hidden: {},
+  show: {
+    transition: {
+      delayChildren,
+      staggerChildren,
+    },
+  },
+});
+
+export const fadeInUp: Variants = {
+  hidden: { opacity: 0, y: 16, filter: "blur(4px)" },
+  show: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: { duration: timings.base, ease },
+  },
+};
+
+export const fadeIn: Variants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: { duration: timings.base, ease },
+  },
+};
+
+export const scaleInSoft: Variants = {
+  hidden: { opacity: 0, scale: 0.98 },
+  show: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: timings.base, ease },
+  },
+};
+
+export const slideInRight: Variants = {
+  hidden: { opacity: 0, x: 24 },
+  show: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: timings.base, ease },
+  },
+};
+
+// Animation variants
+export const widgetContainerVariants = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.3,
+    },
+  },
+};
+export const widgetItemVariants = {
+  hidden: { opacity: 0, y: 50 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { type: "spring", stiffness: 80, damping: 18 },
+  },
+};
+
+export const widgetButtonVariants = {
+  hidden: { opacity: 0, y: 40 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { type: "spring", stiffness: 80, damping: 18 },
+  },
+};
 
 
 export const introContainerVariants = {
-  hidden: {}, // Initial state
+  hidden: {opacity: 0}, // Initial state
   show: {
+    opacity: 1,
     transition: {
       staggerChildren: 0.25, // Delay between child animations
       delayChildren: 0.3, // Delay before starting child animations
@@ -13,7 +99,11 @@ export const introContainerVariants = {
 
 export const introItemVariants = {
   hidden: { opacity: 0, y: 30 }, // Start off-screen (below)
-  show: { opacity: 1, y: 0, transition: { ease: "easeOut", duration: 0.6 } }, // Animate into view
+  show: { opacity: 1, y: 0, transition: { ease: "easeOut", duration: 0.4 } }, // Animate into view
+};
+export const slowIntroItemVariants = {
+  hidden: { opacity: 0, y: 30 }, // Start off-screen (below)
+  show: { opacity: 1, y: 0, transition: { ease: "easeOut", duration: 0.8 } }, // Animate into view
 };
 
 

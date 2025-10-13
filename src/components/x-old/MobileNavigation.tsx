@@ -52,7 +52,7 @@ const MobileNavigation: FC<Props> = (props: Props) => {
           >
             <MobileNavigationItem href="/">Home</MobileNavigationItem>
             <MobileNavigationItem href="/projects">
-              Our work
+              Projects
             </MobileNavigationItem>
             <MobileNavigationItem href="/services">
               What we do

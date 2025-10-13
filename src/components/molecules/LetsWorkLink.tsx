@@ -1,6 +1,7 @@
 import { FC, useState } from "react";
 import Link from "next/link";
 import { RightArrowIcon } from "@components";
+import { useWindowSize } from "@hooks";
 
 interface Props {}
 
@@ -10,15 +11,15 @@ const LetsWorkLink: FC<Props> = (props: Props) => {
   return (
     <Link href="/contact">
       <div
-        className={`page-px w-full py-10 md:py-20 text-[40px] md:text-5xl lg:text-8xl transition-300 cursor-pointer ${
-          hover ? "bg-white  bg-opacity-[0.02] " : ""
+        className={`page-px w-full py-10 md:py-20 text-[40px] md:text-5xl lg:text-8xl transition-300 cursor-pointer bg-custom-black  ${
+          hover ? " bg-opacity-100" : ""
         }`}
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
       >
         <p
           className={`text-sand transition-300 font-primary ${
-            hover ? "opacity-90" : "opacity-70"
+            hover ? "opacity-90" : "opacity-50"
           }`}
         >
           Let&apos;s work together.

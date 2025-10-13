@@ -62,7 +62,7 @@ const TestimonialsItem: FC<Props> = (props: Props) => {
             {selectedTestimonial.name}
           </motion.div>
           <motion.div
-            className="text-custom-gray text-2xl"
+            className="text-grayscale-200 text-2xl"
             variants={childVariants} // Animate the title
           >
             {selectedTestimonial.title}

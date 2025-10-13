@@ -9,15 +9,15 @@ const Footer: FC = () => {
       <div className="page-px flex justify-between gap-2 md:gap-4 py-5 md:py-10 2xl:py-16">
         <div className="flex flex-col text-xl gap-1.5">
           <FooterItem href="/">Home</FooterItem>
-          <FooterItem href="/projects">Our work</FooterItem>
-          <FooterItem href="/services">What we do</FooterItem>
+          <FooterItem href="/projects">Projects</FooterItem>
+          {/* <FooterItem href="/services">What we do</FooterItem> */}
           <FooterItem href="/about">About us</FooterItem>
           <FooterItem href="/contact">Contact us</FooterItem>
           <FooterItem href="/privacy-policy">Privacy Policy</FooterItem>
           <p className="text-xs  text-black mt-14">©{year} SANDBOX STUDIO™</p>
         </div>
         <div className="flex flex-col gap-1 text-sm lg:text-base text-black">
-          <p>Follow us</p>
+          <p className="text-batman">Follow us</p>
           <a
             href="https://www.instagram.com/sandbox_studios_/"
             rel="noreferrer"

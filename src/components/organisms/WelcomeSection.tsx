@@ -15,26 +15,6 @@ const WelcomeSection: FC<Props> = (props: Props) => {
 
   return (
     <div className="left-margin">
-      {/* <div className="border-b border-custom-dark-gray inline-block">
-        <h1 className="py-5 text-2xl font-medium">
-          <Link href="/">SANDBOX STUDIO</Link>{" "}
-        </h1>
-      </div>
-
-      <div className="py-5 text-sm text-custom-gray">
-        <p className="text-white">Need a website?</p>
-        <p>We&apos;re currently accepting new </p>
-        <p>
-          {" "}
-          collaborations.{" "}
-          {router.asPath !== "/contact" && (
-            <Link href="/contact">
-              <span className="text-gray-300 underline">Get in touch</span>
-            </Link>
-          )}
-        </p>
-      </div> */}
-
       <div className="mt-12 md:mt-20 text-4xl sm:text-6xl xl:text-7xl font-medium ">
         <p className={`mb-3 ${title1Class}`}>{title1}</p>
         {title2 && <p className={title2Class}>{title2}</p>}

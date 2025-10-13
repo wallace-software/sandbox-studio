@@ -32,13 +32,15 @@ const GalleryItem: FC<GalleryItemProps> = (props: GalleryItemProps) => {
       </div>
 
       <div className="flex w-full justify-between items-end">
-        <div
-          className={`flex flex-col gap-1 justify-center max-w-[380px] ${data.textColor}`}
-        >
-          <p className="text-opacity-75 text-lg md:text-xl pl-0.5">
+        <div className={`flex flex-col gap-1 justify-center max-w-[380px] `}>
+          <p
+            className={`text-opacity-75 text-lg md:text-xl pl-0.5 ${data.textColor}`}
+          >
             {data.name}
           </p>
-          <h3 className="text-3xl md:text-4xl whitespace-nowrap ">
+          <h3
+            className={`text-3xl md:text-4xl whitespace-nowrap  ${data.textColor}`}
+          >
             {data.title}
           </h3>
         </div>

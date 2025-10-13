@@ -6,6 +6,8 @@ import {
   AnimateWrapper,
 } from "@components";
 import { useViewStore } from "src/contexts";
+import { introContainerVariants, introItemVariants } from "@constants";
+import { motion } from "framer-motion";
 
 interface Props {
   setAssets?: Dispatch<SetStateAction<boolean[]>>;
@@ -16,62 +18,68 @@ const ContactView: FC<Props> = (props: Props) => {
   const { showView } = useViewStore();
 
   return (
-    <div className="page-py relative w-full h-full items-center justify-center overflow-hidden mb-10 ">
+    <div className="page-py page-px col-centered relative w-full h-full min-h-[70svh] xl:min-h-screen overflow-hidden mb-10 ">
       <BackgroundImage setAssets={setAssets} />
-
-      <AnimateWrapper animate={showView}>
-        <div className="relative z-10">
-          <WelcomeSection
-            title1="How can we help?"
-            title2="We've got a solution."
-          />
-
-          <hr className="border-white border-opacity-10 top-margin"></hr>
-
-          <div className="left-margin top-margin flex flex-col lg:flex-row lg:gap-20">
-            <div className="lg:w-1/3 pr-10 max-w-[350px] mb-10">
-              <p className="text-white text-opacity-60 text-xl">
-                Collaboration is our expertise, feel free to reach out with any
-                questions.
-              </p>
-              <div className="hidden lg:flex flex-col ">
-                <p className="mt-10">Hate contact forms?</p>
-                <a
-                  rel="noreferrer"
-                  target="_blank"
-                  href="mailto:info@sandboxstud.io"
-                  className="hover:underline"
-                >
-                  info@sandboxstud.io
-                </a>
-              </div>
-            </div>
-
-            <div className="lg:w-2/3 max-w-[835px] mb-10 lg:mb-20 pr-5">
-              <p>What are you looking for?</p>
-              <p className="opacity-60">Let us know what you need below:</p>
-
-              <div className="lg:w-[49%] my-8 mr-4 pb-2 border-b border-white ">
-                <p>
-                  Get a quote <br /> For new projects
-                </p>
-              </div>
-              <ContactForm />
-            </div>
-            <div className="flex lg:hidden flex-col mb-4">
-              <p className="">Hate contact forms?</p>
-              <a
-                rel="noreferrer"
-                target="_blank"
-                href="mailto:info@sandboxstud.io"
-                className="hover:underline"
-              >
-                info@sandboxstud.io
-              </a>
-            </div>
+      <motion.div
+        className="col-start gap-8 md:gap-12 max-w-[824px] w-full"
+        variants={introContainerVariants}
+        initial="hidden"
+        animate={showView ? "show" : "hidden"}
+      >
+        <motion.div
+          className="flex w-full justify-between"
+          variants={introItemVariants}
+        >
+          <div className="flex flex-col lg:gap-2">
+            <h1 className="text-white">How can we help?</h1>
+            <p className="max-w-[425px]">
+              Take a few seconds to fill out the form below and we will get back
+              to you as soon as possible!
+            </p>
           </div>
-        </div>
-      </AnimateWrapper>
+          {/* <div className="hidden lg:flex flex-col pt-5 ">
+            <p className="text-grayscale-300 font-ligh text-sm">
+              Hate contact forms?
+            </p>
+            <a
+              rel="noreferrer"
+              target="_blank"
+              href="mailto:info@sandboxstud.io"
+              className="underline tracking-wide font-barlow text-grayscale-300 text-sm"
+            >
+              info@sandboxstud.io
+            </a>
+          </div> */}
+        </motion.div>
+
+        <motion.div
+          className="flex flex-col gap-5 lg:gap-10 w-full"
+          variants={introItemVariants}
+        >
+          <div className="border-b border-white/20 pb-3">
+            <p>
+              Get a quote <br /> For new projects
+            </p>
+          </div>
+          <ContactForm />
+        </motion.div>
+        <motion.div
+          className="flex  flex-col mb-6  -mt-6"
+          variants={introItemVariants}
+        >
+          <p className="font-light text-sm text-grayscale-200">
+            Hate contact forms?
+          </p>
+          <a
+            rel="noreferrer"
+            target="_blank"
+            href="mailto:info@sandboxstud.io"
+            className="underline tracking-wide font-barlow text-sm text-grayscale-200"
+          >
+            info@sandboxstud.io
+          </a>
+        </motion.div>
+      </motion.div>
     </div>
   );
 };

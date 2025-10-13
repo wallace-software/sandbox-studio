@@ -1,53 +1,33 @@
-import { FC, useRef } from "react";
+import { FC } from "react";
 import { Button, ProductListItem } from "@components";
-import { PRODUCT_LIST } from "@constants";
-import { motion, useInView } from "framer-motion";
-import { useViewStore } from "@contexts";
-
-const containerVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.2,
-    },
-  },
-};
-
-const fadeInUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { ease: "easeOut", duration: 0.6 },
-  },
-};
+import { fadeInUp, PRODUCT_LIST, stagger } from "@constants";
+import { motion } from "framer-motion";
 
 const ProductList: FC = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-40% 0px" });
-  const { showView } = useViewStore();
-
   return (
     <motion.div
-      ref={ref}
       className="landing-container col-centered"
-      variants={containerVariants}
+      variants={stagger(0.2, 0.2)}
       initial="hidden"
-      animate={isInView && showView ? "visible" : "hidden"}
+      whileInView="show"
+      viewport={{ once: true, amount: 0.3 }}
     >
-      <div className="flex flex-col-reverse xl:flex-row items-start justify-center gap-14 xl:gap-40 2xl:gap-64 vertical-padding">
-        <div className="flex flex-col gap-5 md:w-[410px] h-full justify-between">
+      <motion.div className="flex flex-col-reverse xl:flex-row items-start justify-center gap-14 xl:gap-40 2xl:gap-64 vertical-padding">
+        <motion.div
+          className="flex flex-col gap-5 md:w-[410px] h-full justify-between"
+          variants={fadeInUp}
+        >
           <div className="flex flex-col gap-8">
             <p className="text-4xl md:text-5xl font-normal !leading-[1.3] tracking-wide md:min-w-[380px] font-primary hidden xl:block">
               Aesthetic digital products.
             </p>
-            <p className="text-custom-gray text-lg xl:text-xl font-regular !tracking-wide ">
+            <p className="text-lg xl:text-xl font-regular !tracking-wide ">
               At Sandbox Studio, we specialize in providing best-in-class web
               design, brand design, and web development services, tailored to
               our individual client needs.
             </p>
           </div>
-          <p className="text-custom-gray text-lg xl:text-xl font-regular">
+          <p className="text-lg xl:text-xl font-regular">
             Curious to learn more?
           </p>
           <Button
@@ -55,12 +35,9 @@ const ProductList: FC = () => {
             link="/services"
             className="!min-w-[306px] h-[48px]"
           />
-        </div>
+        </motion.div>
 
-        <motion.div
-          className="flex flex-col gap-6 md:gap-10 w-full"
-          variants={containerVariants}
-        >
+        <div className="flex flex-col gap-6 md:gap-10 w-full">
           <p className="text-4xl md:text-5xl font-normal !leading-[1.3] tracking-wide md:min-w-[380px] font-primary  xl:hidden pb-4">
             Aesthetic digital products.
           </p>
@@ -71,15 +48,15 @@ const ProductList: FC = () => {
             Our services.
           </motion.p>
 
-          <div className="flex flex-col w-full">
+          <motion.div className="flex flex-col w-full" variants={fadeInUp}>
             {PRODUCT_LIST.map((item, index) => (
-              <motion.div key={index} variants={fadeInUp}>
+              <div key={index}>
                 <ProductListItem icon={item.icon} title={item.title} />
-              </motion.div>
+              </div>
             ))}
-          </div>
-        </motion.div>
-      </div>
+          </motion.div>
+        </div>
+      </motion.div>
     </motion.div>
   );
 };

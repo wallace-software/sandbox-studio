@@ -6,7 +6,7 @@ import {
   ProductList,
   About,
   ProjectGallery,
-  LandingScreen,
+  HeroSection,
 } from "@components";
 
 interface Props {
@@ -19,11 +19,11 @@ const LandingView: FC<Props> = (props: Props) => {
   return (
     <div className="relative w-full h-full">
       <BackgroundImage setAssets={setAssets} fixed={false} />
-      <LandingScreen />
-      <ProjectGallery />
+      <HeroSection />
       <ProductList />
-      <Testimonials />
+      <ProjectGallery />
       <About />
+      <Testimonials />
 
       <LetsWorkLink />
     </div>

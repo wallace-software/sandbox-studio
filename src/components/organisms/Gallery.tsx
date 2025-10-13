@@ -17,9 +17,19 @@ interface GalleryProps extends HTMLAttributes<HTMLDivElement> {
   itemGap?: number; // px
   visibleCountDesktop?: number;
   visibleCountMobile?: number;
+  arrowsAligned?: "left" | "right"; // Alignment of arrows
+  roundedParent?: boolean; // Whether to apply rounded corners to the parent container
+  galleryItemGap?: string; // Gap between gallery items, can be a Tailwind CSS class
 }
 
-const Gallery: FC<GalleryProps> = ({ children, className, itemGap = 20 }) => {
+const Gallery: FC<GalleryProps> = ({
+  children,
+  className,
+  itemGap = 20,
+  arrowsAligned = "left",
+  roundedParent = false,
+  galleryItemGap,
+}) => {
   const [galleryIndex, setGalleryIndex] = useState(0);
   const [items, setItems] = useState<ReactNode[]>([]);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -73,56 +83,6 @@ const Gallery: FC<GalleryProps> = ({ children, className, itemGap = 20 }) => {
     return -(index * (itemWidth + itemGap));
   };
 
-  // // Add scroll-based data population with fail-safe
-  // useEffect(() => {
-  //   const container = containerRef.current;
-  //   if (!container) return;
-
-  //   const handleScroll = () => {
-  //     if (items.length === 0) return; // Fail-safe: Do nothing if there are no items
-
-  //     const { scrollLeft, scrollWidth, clientWidth } = container;
-
-  //     // Load more items when scrolling to the right end
-  //     if (scrollLeft + clientWidth >= scrollWidth - 10) {
-  //       setItems((prevItems) => [...prevItems, ...children]);
-  //     }
-
-  //     // Load more items when scrolling to the left end
-  //     if (scrollLeft <= 10) {
-  //       setItems((prevItems) => [...children, ...prevItems]);
-  //       container.scrollLeft += children.length * (itemWidth + itemGap); // Adjust scroll position
-  //     }
-  //   };
-
-  //   container.addEventListener("scroll", handleScroll);
-  //   return () => container.removeEventListener("scroll", handleScroll);
-  // }, [children, itemWidth, itemGap, items.length]);
-
-  // // Add scroll-based data population
-  // useEffect(() => {
-  //   const container = containerRef.current;
-  //   if (!container) return;
-
-  //   const handleScroll = () => {
-  //     const { scrollLeft, scrollWidth, clientWidth } = container;
-
-  //     // Load more items when scrolling to the right end
-  //     if (scrollLeft + clientWidth >= scrollWidth - 10) {
-  //       setItems((prevItems) => [...prevItems, ...children]);
-  //     }
-
-  //     // Load more items when scrolling to the left end
-  //     if (scrollLeft <= 10) {
-  //       setItems((prevItems) => [...children, ...prevItems]);
-  //       container.scrollLeft += children.length * (itemWidth + itemGap); // Adjust scroll position
-  //     }
-  //   };
-
-  //   container.addEventListener("scroll", handleScroll);
-  //   return () => container.removeEventListener("scroll", handleScroll);
-  // }, [children, itemWidth, itemGap]);
-
   const [isMobileDevice, setIsMobileDevice] = useState(false);
   const getIsMobileDevice = (): boolean => {
     if (typeof navigator === "undefined") return false; // Ensure this runs only on the client
@@ -140,14 +100,23 @@ const Gallery: FC<GalleryProps> = ({ children, className, itemGap = 20 }) => {
       }`}
     >
       {!isMobileDevice && (
-        <div className="row-end gap-5 w-full pr-5 lg:pr-8 xl:pr-8 2010:pr-0">
+        <div
+          className={`gap-5 w-full ${
+            arrowsAligned === "right"
+              ? "row-end pr-5 lg:pr-8 xl:pr-8 2010:pr-0"
+              : "row-start"
+          }`}
+        >
           <ArrowButtonIcon direction="left" onClick={handlePrevious} />
           <ArrowButtonIcon direction="right" onClick={handleNext} />
         </div>
       )}
       <div
         ref={containerRef}
-        className="invisible-scrollbar rounded-l-3xl 2010:rounded-r-3xl overflow-hidden w-full flex gap-5 transition-transform duration-500 ease-out"
+        className={`invisible-scrollbar overflow-hidden w-full flex transition-transform duration-500 ease-out ${
+          roundedParent ? "rounded-l-3xl 2010:rounded-r-3xl " : " "
+        }
+          ${galleryItemGap ?? " gap-5  "}`}
       >
         {items.map((item, index) => (
           <GalleryItemWrapper

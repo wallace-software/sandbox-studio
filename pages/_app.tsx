@@ -4,6 +4,7 @@ import type { AppProps } from "next/app";
 import { Toaster } from "react-hot-toast";
 import { AppProvider } from "@contexts";
 import { useEffect } from "react";
+import { Header } from "@components";
 
 const App = ({ Component, pageProps }: AppProps) => {
   useEffect(() => {
@@ -18,19 +19,20 @@ const App = ({ Component, pageProps }: AppProps) => {
 
   return (
     <AppProvider>
+      <Header />
       <Component {...pageProps} />
       <Toaster
-        position="bottom-right"
+        position="top-right"
         toastOptions={{
           style: {
-            border: "2px solid #9D87D9",
+            border: "2px solid #181818",
             padding: "10px",
-            color: "#D2D2D2",
-            backgroundColor: "#101010",
+            color: "#181818",
+            backgroundColor: "#F0E3AA",
           },
           iconTheme: {
-            primary: "#171717",
-            secondary: "#9D87D9",
+            primary: "#181818",
+            secondary: "#F0E3AA",
           },
         }}
       />

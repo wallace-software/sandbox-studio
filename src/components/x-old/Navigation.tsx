@@ -56,7 +56,7 @@ const Navigation: FC<HTMLAttributes<HTMLDivElement>> = (props) => {
                 key="nav"
               >
                 <NavigationItem href="/">Home</NavigationItem>
-                <NavigationItem href="/projects">Our work</NavigationItem>
+                <NavigationItem href="/projects">Projects</NavigationItem>
                 <NavigationItem href="/services">What we do</NavigationItem>
                 <NavigationItem href="/about">About us</NavigationItem>
                 <NavigationItem href="/contact">Contact us</NavigationItem>

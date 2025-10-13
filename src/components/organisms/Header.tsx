@@ -1,79 +1,67 @@
-import { FC, useEffect, useRef, useState } from "react";
-import {
-  motion,
-  useCycle,
-  useMotionValueEvent,
-  useScroll,
-} from "framer-motion";
+import { FC, useEffect, useState, useRef } from "react";
+import { delay, motion, useScroll } from "framer-motion";
 import Link from "next/link";
-import { TwoLinesIcon, NavigationMenu, Logo } from "@components";
-import { midEnterAnimation } from "@constants";
+import {
+  TwoLinesIcon,
+  NavigationMenu,
+  Logo,
+  NavigationItem,
+} from "@components";
+import { menuItems, midEnterAnimation } from "@constants";
+import { useWindowSize } from "@hooks";
+import { useRouter } from "next/router";
 
 interface Props {
-  showHeader?: boolean; //used to show header if isStatic is false
   headerType?: string;
 }
 
-const Header: FC<Props> = (props: Props) => {
-  const { headerType = "scroll", showHeader = true } = props;
+const Header: FC<Props> = ({ headerType = "scroll" }) => {
+  const [showNav, setShowNav] = useState(true);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isDeepScrolled, setIsDeepScrolled] = useState(false);
 
-  const [animateHeader, setAnimateHeader] = useState<boolean>(true);
-
-  //scroll variables
-  const scrollRef = useRef<number>();
   const { scrollY } = useScroll();
+  const lastScrollY = useRef(0);
 
-  //hide header on scroll down, show on scroll up
-  useMotionValueEvent(scrollY, "change", (latest) => {
-    // console.log("scrollY", latest);
-    //first instance
-    if (scrollRef.current === undefined) {
-      // setAnimateHeader(false);
-      scrollRef.current = latest;
-      return;
-    }
+  useEffect(() => {
+    const unsubscribe = scrollY.on("change", (y) => {
+      setIsScrolled(y > 30);
+      setIsDeepScrolled(y > 30);
 
-    //set true above scroll threshold
-    if (latest < 30) {
-      setAnimateHeader(true);
-      scrollRef.current = latest;
-      return;
-    }
+      const scrollDelta = y - lastScrollY.current;
 
-    //scroll down
-    if (scrollRef.current < latest) {
-      if (scrollRef.current + 30 < latest) {
-        setAnimateHeader(false);
-        scrollRef.current = latest;
+      if (scrollDelta > 10) {
+        setShowNav(false);
       }
-      return;
-    }
-  });
 
-  useEffect(() => {
-    setAnimateHeader(showHeader);
-  }, [showHeader]);
+      if (scrollDelta < -10) {
+        setShowNav(true);
+      }
 
-  // Check initial scroll position on mount
-  useEffect(() => {
-    if (scrollY.get() > 30) {
-      setAnimateHeader(false); // Hide header if already scrolled down
-    } else {
-      setAnimateHeader(true); // Show header if near the top
-    }
+      lastScrollY.current = y;
+    });
+
+    return () => unsubscribe();
   }, [scrollY]);
 
   return (
     <header
-      className={`top-0 z-10 transition-all duration-500 w-full ${
+      className={`top-0 z-50 w-full ${
         headerType === "scroll" ? "fixed" : headerType
-      } `}
+      }`}
     >
       {headerType !== "scroll" ? (
         <HeaderItems />
       ) : (
         <motion.div
-          className={`transition-200 ${animateHeader ? "" : "bg-black"} `}
+          animate={{
+            y: showNav ? 0 : -100,
+            backgroundColor: isDeepScrolled ? "#000000" : "rgba(0, 0, 0, 0)",
+          }}
+          transition={{
+            y: { duration: 0.4, ease: "easeOut" },
+            backgroundColor: { duration: 0.4, ease: "easeOut", delay: 0.2 },
+          }}
         >
           <HeaderItems />
         </motion.div>
@@ -83,23 +71,51 @@ const Header: FC<Props> = (props: Props) => {
 };
 
 const HeaderItems: FC = () => {
-  const [open, cycleOpen] = useCycle(false, true);
+  const [open, setOpen] = useState(false);
+  const [winWidth] = useWindowSize();
 
+  const { pathname } = useRouter();
+  const isEstimatePage = pathname === menuItems[menuItems.length - 1].href;
   return (
-    <motion.div
-      className="page-px flex items-center justify-between w-full  py-4 md:py-6 z-20 bg-transparent"
+    <div
+      className="page-px flex items-center justify-between w-full py-4 md:py-8 z-20 bg-transparent"
       {...midEnterAnimation}
     >
       <Link href="/" className="text-sand-300 text-2xl md:text-3xl font-bold">
         <Logo type="small" />
       </Link>
-      <TwoLinesIcon
-        animate={open}
-        onClick={() => cycleOpen()}
-        className="z-[100]"
-      />
-      <NavigationMenu open={open} toggleMenu={cycleOpen} />
-    </motion.div>
+      {winWidth > 768 ? (
+        <nav className="row-centered gap-8 lg:gap-14">
+          {menuItems.map((item, index) => (
+            <NavigationItem key={index} item={item} />
+          ))}
+          <Link
+            href={menuItems[menuItems.length - 1].href}
+            className={`text-base font-barlow font-semibold w-[166px] h-[36px] col-centered rounded-3xl transition-200 border-2 border-sand
+              ${
+                isEstimatePage
+                  ? "text-sand-300 bg-batman cursor-default"
+                  : "text-black bg-sand hover:text-sand-300 hover:bg-batman"
+              }`}
+          >
+            Get an Estimate
+          </Link>
+        </nav>
+      ) : (
+        <>
+          <TwoLinesIcon
+            animate={open}
+            onClick={() => setOpen((prev) => !prev)}
+            className="z-[100]"
+          />
+          <NavigationMenu
+            open={open}
+            toggleMenu={() => setOpen((prev) => !prev)}
+          />
+        </>
+      )}
+    </div>
   );
 };
+
 export default Header;

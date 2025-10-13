@@ -138,7 +138,6 @@ export const projects: Project[] = [
   },
 ]
 
-
 export const clients: Client[] = [
   {
     id: 1,
@@ -302,7 +301,8 @@ export const clients: Client[] = [
       fillColor: "!fill-folio-text",
       title: "Folio",
       videoId: "775744d1681404a304926b63acab98cd", 
-      href: "https://folio.works/",
+      href: "https://folio-ten-coral.vercel.app/",
     }]
   },
 ];
+ 

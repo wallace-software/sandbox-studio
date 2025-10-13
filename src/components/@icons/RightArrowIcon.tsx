@@ -14,7 +14,7 @@ const RightArrowIcon: FC<Props> = (props: Props) => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={`transition-300 ${componentProps.className} ${
-        animate ? "opacity-80" : "opacity-40"
+        animate ? "opacity-90" : "opacity-30"
       }`}
       onClick={componentProps.onClick}
     >

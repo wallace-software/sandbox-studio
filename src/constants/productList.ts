@@ -16,11 +16,7 @@ export const PRODUCT_LIST: ProductList[] = [
   {
     icon: "discord-management.svg",
     title: "Project Managment",
-  },
-  // {
-  //   icon: "e-commerce.svg",
-  //   title: "Digital Sales",
-  // },
+  }, 
   {
     icon: "tech-support.svg",
     title: "Consultation",

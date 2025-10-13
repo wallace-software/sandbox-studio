@@ -36,7 +36,7 @@ const LandingScreen: FC = () => {
       </motion.h4>
 
       {/* Hero Video */}
-      <motion.div variants={introItemVariants}>
+      <motion.div variants={introItemVariants} className="z-0">
         <HeroVideo />
       </motion.div>
     </motion.div>

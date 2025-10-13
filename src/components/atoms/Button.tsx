@@ -1,5 +1,4 @@
-import { FC, HTMLAttributes, useState } from "react";
-import Link from "next/link";
+import { FC, HTMLAttributes } from "react";
 import { useRouter } from "next/router";
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
@@ -35,13 +34,13 @@ const Button: FC<Props> = (props: Props) => {
   return (
     <div
       className={`group min-w-[192px] h-[48px] max-w-[220px] whitespace-nowrap cursor-pointer inline-flex items-center justify-between 
-      transition-300 text-sand text-xl font-regukar pl-5 pr-1.5 rounded-full border border-white border-opacity-20 ${
+      transition-200 text-sand text-xl font-regukar pl-5 pr-1.5 rounded-full border border-white border-opacity-20 ${
         disabled ? " cursor-not-allowed opacity-40" : "hover:border-opacity-40"
       } ${componentProps.className} `}
       onClick={() => handleClick()}
     >
       <span
-        className={`pb-0.5 transition-300 ${
+        className={`pb-0.5 transition-200 ${
           disabled ? "opacity-80" : "group-hover:opacity-100 opacity-80"
         }`}
       >
@@ -60,7 +59,7 @@ const Button: FC<Props> = (props: Props) => {
             cx="18"
             cy="18"
             r="18"
-            className={`transition-300 fill-sand ${
+            className={`transition-200 fill-sand ${
               disabled ? "opacity-10" : "group-hover:opacity-20 opacity-10"
             } ${circleClass}`}
           />

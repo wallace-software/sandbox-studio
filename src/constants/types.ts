@@ -54,3 +54,36 @@ export type Client = {
   carousel?: Carousel[];
   gallery?: GalleryType[];
 };
+
+export interface Links {
+  href: string;
+  label: string;
+}
+export interface NavigationLinks extends Links { 
+  hide?: boolean; 
+}
+ 
+export type FormData = {
+  name: string;
+  email: string;
+  message: string;
+  budgetRange: string;
+  relevantDocuments: string;
+};
+
+export const emptyForm: FormData = {
+  name: "",
+  email: "",
+  message: "",
+  budgetRange: "",
+  relevantDocuments: "",
+};
+
+export interface TeamMember {
+  name: string;
+  title: string;
+  image: string;
+  twitter?: string;
+  linkedin?: string;
+  github?: string;
+}

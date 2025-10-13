@@ -42,10 +42,10 @@ const HeroSection: FC = () => {
           variants={introItemVariants}
           className="col-centered text-center"
         >
-          <motion.h1 className="text-centered max-w-[700px] lg:max-w-[1000px]">
-            You&apos;re website doesn&apos;t need to be basic.{" "}
+          <motion.h1 className="text-centered max-w-[700px] lg:max-w-[900px]">
+            Your website deserves to stand out{" "}
             <span className="text-sand font-medium">
-              Sandbox, can help with that.
+              Sandbox can help with that
             </span>
           </motion.h1>
         </motion.div>

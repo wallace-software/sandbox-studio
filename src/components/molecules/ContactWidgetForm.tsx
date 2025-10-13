@@ -83,7 +83,7 @@ const ContactWidgetForm: FC<Props> = (props: Props) => {
     <motion.aside
       className="z-40 fixed bottom-20 md:bottom-32 right-3 md:right-6 origin-bottom-right 
           flex flex-col justify-between 
-          w-[90vw] md:w-[501px] h-[600px] 
+          w-[90vw] md:w-[501px] h-[500px] md:h-[600px] 
           rounded-3xl bg-custom-black p-6 md:p-10 
           border md:border-4 border-sand/80 overflow-hidden"
       ref={ref}
@@ -172,7 +172,7 @@ const ContactWidgetForm: FC<Props> = (props: Props) => {
           className="input w-full resize-none !bg-white !bg-opacity-[3%]"
           placeholder="Message (optional)"
           maxLength={1000}
-          rows={winWidth >= 768 ? 13 : 11}
+          rows={winWidth >= 768 ? 13 : 6}
           variants={widgetItemVariants}
         />
         <motion.div variants={widgetButtonVariants}>

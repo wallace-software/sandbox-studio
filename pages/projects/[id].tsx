@@ -10,8 +10,22 @@ const ProjectPage: NextPage = () => {
 
   return (
     <PageLayout assets={assets}>
-      <ProjectItemView setAssets={setAssets} id={id} />
+      {process.env.NODE_ENV === "development" ? (
+        <div className="mt-8 text-sm text-gray-400">
+          <ProjectItemView setAssets={setAssets} id={id} />
+        </div>
+      ) : (
+        <div className="mt-8 text-sm text-gray-400">
+          <div className="flex flex-col items-center justify-center min-h-[60vh]">
+            <h1 className="text-3xl font-bold text-white mb-4">Coming Soon</h1>
+            <p className="text-lg text-sand font-medium">
+              This project page is under construction.
+            </p>
+          </div>
+        </div>
+      )}
     </PageLayout>
   );
 };
+
 export default ProjectPage;

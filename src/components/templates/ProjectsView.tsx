@@ -91,19 +91,25 @@ const ProjectGalleryItem: FC<ProjectGalleryItemProps> = ({ data }) => {
           className={`flex flex-col gap-1 justify-center max-w-[380px] ${data.textColor}`}
         >
           <h3 className="">{data.title}</h3>
-          <p className="">
-            We need to add a {`data.description`} to each project
-          </p>
+          {/* TODO: Add project description */}
+          {process.env.NODE_ENV === "development" && (
+            <p className="">
+              We need to add a {`data.description`} to each project
+            </p>
+          )}
         </div>
-        <div className="mr-6 underline text-sm">
-          {/* See more */}
-          <ArrowButtonIcon
-            direction="right"
-            onClick={() =>
-              handleClick(data.title.toLocaleLowerCase().replace(" ", "-"))
-            }
-          />
-        </div>
+        {/* TODO: Add project content and uncomment */}
+        {process.env.NODE_ENV === "development" && (
+          <div className="mr-6 underline text-sm">
+            {/* See more */}
+            <ArrowButtonIcon
+              direction="right"
+              onClick={() =>
+                handleClick(data.title.toLocaleLowerCase().replace(" ", "-"))
+              }
+            />
+          </div>
+        )}
       </div>
     </div>
   );
